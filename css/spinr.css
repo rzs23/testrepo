@@ -1,0 +1,169 @@
+*{ outline: none; }
+body{ padding-top: 1px; overflow-x: hidden; }
+@color-orange: #D52224;
+#clkadd{ width: 71%; height: 27px; position: fixed; top: -40%; left: 313px; padding: 9px 6px; color: #fff; background: #D52224; opacity:0.9;
+font-size: 23px; text-align: center; text-shadow: 5px 7px 10px #000000;  }
+
+#app-settings  {  width: 73%; height: 495px; left: 21%; position: absolute; top: -85%; background: none repeat scroll 0 0 #EADEDE;}
+
+.hidden { display:none;}
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{ width: 1216px; height: 684px;}
+.container .row{ margin-bottom :7px; }
+.container .row:nth-child(1){ margin-top: -1px; }
+ .container .header{ width: 100%; height: 45px; display: block; z-index: 999;  position: relative;
+ background: #f60100; /* Old browsers */
+background: -moz-linear-gradient(left, #f60100 1%, #f72b07 50%, #eae8e8 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(1%,#f60100), color-stop(50%,#f72b07), color-stop(100%,#eae8e8)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #f60100 1%,#f72b07 50%,#eae8e8 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #f60100 1%,#f72b07 50%,#eae8e8 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #f60100 1%,#f72b07 50%,#eae8e8 100%); /* IE10+ */
+background: linear-gradient(to right, #f60100 1%,#f72b07 50%,#eae8e8 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f60100', endColorstr='#eae8e8',GradientType=1 ); /* IE6-9 */
+}
+
+.container .header a{ cursor: pointer; color: #fff; }
+.container .header a img{   float: right; height: 43px;  margin-right: 31px;  width: 45px; }
+.container .header h1{ margin: 2px 0; font-size: 22px;}
+
+.container .row .home-accordian{ height: 200px; margin:0px 14px 0px 0px;}
+/****************************************** HOME PAGE STYLES *******************************************************/
+.container .row .main-carousel{ overflow: hidden; margin-left: 0px;  position: relative;}
+.container .row .bollyheader, .container .row .regheader, .container .row .intheader{ width: 930px; margin-bottom: 0px; padding: 5px; color: #fff; font-size: 15px; font-weight: normal; background: url("../img/stripes-bar.jpg") repeat scroll 0 0 ;}
+
+.container .row .accordion{ margin: 0 15px 0 0; height: 493px; background: url('../img/cat-bg.png') repeat-y;}
+.container .row .accordion .accordion-group{ border: 0px; border-radius: 0; }
+.container .row .accordion .accordion-group .accordion-body ul{ list-style: none outside none; margin: 0 0 0 27px; }
+.container .row .accordion .accordion-group:nth-child(3) .accordion-body ul{  height: 204px; margin: 0 0 0 27px; list-style: none outside none;  overflow-y: auto;}
+
+.container .row .accordion .accordion-group .accordion-body ul li {padding: 2px 0;}
+.container .row .accordion .accordion-group .accordion-body ul li a{ color: #fff; }
+.container .row .accordion .accordion-inner {  float: left; width: 96%; display: inline-block; border-bottom: 2px solid #E5E5E5; }
+.container .row .accordion .accordion-inner img{ float: left; }
+.container .row .accordion .accordion-inner div{ height: 87px; margin-top: 32px; }
+.container .row .accordion .accordion-inner div span{ width: 100%; display: inline-block; }
+.container .row .accordion .accordion-group .accordion-heading a{border: none; border-radius:0; box-shadow: none; color: red; outline: medium none;
+													padding: 13px 15px; text-align: center; text-shadow: none; }
+													
+.container .row .accordion .accordion-group .accordion-heading a:hover,.container .row .accordion .accordion-group .accordion-heading a:active{
+			color: #fff; text-decoration: none; font-weight:bold;
+}													
+.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a{ 
+		background: url('../img/top10_icon.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
+		background: url('../img/top10_icon.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
+		background: url('../img/top10_icon.png') no-repeat, linear-gradient(to bottom, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* W3C */
+		}
+
+.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a{ 
+background: url('../img/discover_icon.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
+background: url('../img/discover_icon.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
+background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* W3C */
+}
+
+.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a{ 
+background: url('../img/category.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
+background: url('../img/category.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
+background: url('../img/category.png') no-repeat, linear-gradient(to bottom, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* W3C */
+}
+
+.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a{ 
+background: url('../img/playlist_icon.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
+background: url('../img/playlist_icon.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
+background: url('../img/playlist_icon.png') no-repeat, linear-gradient(to bottom, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* W3C */
+}
+
+.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a{ 
+background: url('../img/setting.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
+background: url('../img/setting.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
+background: url('../img/setting.png') no-repeat, linear-gradient(to bottom, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* W3C */
+}
+
+.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a{ 
+background: url('../img/exit_btn.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
+background: url('../img/exit_btn.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
+background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* W3C */
+}
+
+
+.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a:active{ 
+				background: url('../img/top10_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
+				background: url('../img/top10_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
+				background: url('../img/top10_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/top10_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
+				background: url('../img/top10_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/top10_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				}
+
+.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a:active{ 
+				background: url('../img/discover_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
+				background: url('../img/discover_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
+				background: url('../img/discover_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/discover_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
+				background: url('../img/discover_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				}
+
+.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a:active{ 
+				background: url('../img/category.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
+				background: url('../img/category.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
+				background: url('../img/category.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/category.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
+				background: url('../img/category.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/category.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				}
+
+.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a:active{ 
+				background: url('../img/playlist_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
+				background: url('../img/playlist_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
+				background: url('../img/playlist_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/playlist_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
+				background: url('../img/playlist_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/playlist_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				}	
+
+.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a:active{ 
+				background: url('../img/setting.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
+				background: url('../img/setting.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
+				background: url('../img/setting.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/setting.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
+				background: url('../img/setting.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/setting.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				}	
+
+.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a:active{ 
+				background: url('../img/exit_btn.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
+				background: url('../img/exit_btn.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
+				background: url('../img/exit_btn.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/exit_btn.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
+				background: url('../img/exit_btn.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
+				}
+				
+
+.container .row #main-div #sec-div{ width: 100%; position: absolute; top: 0px; right: -100%; }	
+
+.container .row #main-div #sec-div .back-btn{ height: 453px; left: 92%; position: absolute; top: 0; width: 63px;
+									background: url("../img/back_playlist_normal.png") no-repeat scroll 0 50% transparent; }
+.container .row #main-div #sec-div .back-btn:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+.container .row #main-div #sec-div .back-btn:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+			
+.container .row  #main-div  .album-detail-wrap{ width: 100%; height: 493px; margin: 0; top:0; right: -100%; position: absolute;  background: #fff;}	
+.container .row  #main-div  .album-detail-wrap .albm-desc{ float:left; height: 214px; margin-top: 10px;}	
+.container .row  #main-div  .album-detail-wrap .albm-desc img{ height: 214px; width: 220px; }
+.container .row  #main-div  .album-detail-wrap .albm-desc div{ float: left; margin: 10px 0px 0px; position: relative; }
+.container .row  #main-div  .album-detail-wrap .albm-desc div span:nth-child(1){ font-size: 19px; margin: 0px 0px 5px; }
+.container .row  #main-div  .album-detail-wrap .albm-desc div span:nth-child(2){ font-size: 16px; margin: 0px; }
+.container .row  #main-div  .album-detail-wrap .albm-desc div span:nth-child(3){ font-size: 16px; margin: 0px; }
+.container .row  #main-div  .album-detail-wrap .song-item{ background: #fcfaea; height: 95%; margin-top: 12px; overflow-y: auto; } 
+.container .row  #main-div  .album-detail-wrap .song-item div{ padding: 11px; border: 1px solid #ccc; box-shadow: 0px 7px 14px #777777;
+-moz-box-shadow:0px 7px 14px #777777; -webkit-box-shadow: 0px 7px 14px #777777; }
+
+.container .row  #main-div .alphabet{ margin-left: 65px; }
+.container .row  #main-div .alphabet a{color: red; font-size: 17px; margin-right: 22px;}
+/*.container .row .accordion .accordion-group .accordion-heading a span{ width: 20px; height: 20px; } */
+/*.container .row .accordion .accordion-group .accordion-heading a span.droparrow{ background: url("../img/albmdownico.png") no-repeat scroll 0 0; }
+.container .row .accordion .accordion-group .accordion-heading a span.uparrow{ background: url("../img/albmupico.png") no-repeat scroll 0 0; } */
+/* 
+.accordion-toggle.collapsed span{ background: url("../img/albmdownico.png") no-repeat scroll 0 0; }
+.accordion-toggle span{ background: url("../img/albmupico.png") no-repeat scroll 0 0; } */
+
+/*******************************************************/

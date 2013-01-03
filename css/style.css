@@ -1,0 +1,452 @@
+* {
+  outline: none;
+}
+body {
+  padding-top: 1px;
+}
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 940px ;
+}
+.container {
+  /**** end of header ****/
+
+  /**** end of nav collapse *****/
+
+  /*** end of row ****/
+
+}
+.container .header {
+  width: 100%;
+  height: 120px;
+  display: block;
+  background: url("../img/spinr-header.png") no-repeat scroll 0 0;
+}
+.container .header a {
+  cursor: pointer;
+  color: #fff;
+}
+.container .header h1 {
+  margin: 40px 0;
+  font-size: 50px;
+}
+.container .header .usr-settings {
+  padding: 14px 0px 0px;
+}
+.container .header .usr-settings ul {
+  list-style: none;
+}
+.container .header .usr-settings li {
+  float: left;
+}
+.container .header .usr-settings a {
+  padding: 0px 18px;
+  font-weight: bold;
+  border-right: 1px solid #fff;
+  cursor: pointer;
+}
+.container .header .usr-settings a.last {
+  border: none;
+}
+.container .breadcrumb {
+  background: none;
+}
+.container .navbar {
+  margin-bottom: 0px;
+}
+.container .navbar-inverse .navbar-inner {
+  border-radius: 0px;
+  background: url("../img/stripes-bar.jpg") repeat scroll 0 0 transparent;
+}
+.container .nav-collapse .navbar-form input {
+  width: 310px;
+}
+.container .nav-collapse ul.nav {
+  float: left;
+  margin: 5px 12% 0 0;
+  left: 0;
+  position: relative;
+  display: block;
+}
+.container .nav-collapse ul.nav li {
+  float: left;
+  position: relative;
+  display: block;
+}
+.container .nav-collapse ul.nav li a:hover {
+  color: red;
+}
+.container .nav-collapse ul.nav li ul {
+  width: 120px;
+  margin: 0px;
+  left: 15px;
+  display: none;
+  z-index: 999;
+}
+.container .nav-collapse ul.nav li ul li a {
+  padding-left: 5px;
+  padding-right: 0;
+  color: #fff;
+}
+.container .nav-collapse ul.nav li a {
+  margin-left: 1px;
+  padding: 9px 16px;
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.container .nav-collapse ul.nav :hover a {
+  color: red;
+}
+.container .nav-collapse ul.nav :hover li {
+  float: none;
+}
+.container .nav-collapse ul.nav :hover li a {
+  color: #fff;
+}
+.container .nav-collapse ul.nav :hover li a:hover {
+  background: #000;
+}
+.container .row .main-carousel {
+  width: 940px;
+}
+.container .row .bollyheader,
+.container .row .regheader,
+.container .row .intheader {
+  width: 930px;
+  margin-bottom: 0px;
+  padding: 5px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: normal;
+  background: url("../img/stripes-bar.jpg") repeat scroll 0 0;
+}
+.container .row .nav-list li a {
+  padding: 9px 15px;
+  color: #FFFFFF;
+  background: none repeat scroll 0 0 #4E4E4E;
+}
+.container .row .nav-list li a:hover {
+  background: url("../img/vertical-active.jpg") repeat scroll 0 0;
+}
+.container .row .nav-list .active a {
+  background: url("../img/vertical-active.jpg") repeat scroll 0 0;
+}
+.container .row .nav-list .active a:hover {
+  background: url("../img/vertical-active.jpg") repeat scroll 0 0;
+}
+.container .row .songs-data-wrap ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container .row .songs-data-wrap ul li {
+  float: right;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #DCDCDC;
+}
+.container .row .songs-data-wrap ul li .tile-det {
+  float: left;
+  width: 253px;
+  height: 150px;
+  margin-right: 3px;
+  margin-bottom: 10px;
+}
+.container .row .songs-data-wrap ul li .tile-det img {
+  float: left;
+}
+.container .row .songs-data-wrap ul li .tile-det-data {
+  float: left;
+  width: 94px;
+  margin: 20% 0px 0px 17px;
+}
+.container .row .sidebar-filter {
+  margin-right: 0px;
+}
+.container .row .sidebar-filter .nav-header {
+  padding: 7px 15px;
+  font-size: 15px;
+  color: #fff;
+  background: url("../img/stripes-bar.jpg") repeat scroll 0 0;
+}
+.container .row .sidebar-filter .nav-list {
+  padding-left: 2px;
+  padding-right: 15px;
+}
+.container .row .sidebar-filter .nav-list .nav-header {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.container .row .sidebar-filter .nav-list li a {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.container .row .pagination {
+  float: right;
+}
+.container .row .privacydata p {
+  width: 96%;
+}
+.container .row .accordion {
+  margin: 0px;
+}
+.container .row .accordion .accordian-group {
+  margin-bottom: 5px;
+  border: 0px;
+  border-radius: 0;
+}
+.container .row .accordion .accordion-inner {
+  float: left;
+  width: 96%;
+  display: inline-block;
+  border-bottom: 2px solid #E5E5E5;
+}
+.container .row .accordion .accordion-inner img {
+  float: left;
+}
+.container .row .accordion .accordion-inner div {
+  height: 87px;
+  margin-top: 32px;
+}
+.container .row .accordion .accordion-inner div span {
+  width: 100%;
+  display: inline-block;
+}
+.container .row .accordion .accordian-heading a {
+  outline: none;
+  background: #DCDCDC;
+}
+.container .row .accordion .accordian-heading a span {
+  width: 20px;
+  height: 20px;
+}
+.container .row .accordian-toggle.collapsed span {
+  background: url("../img/albmdownico.png") no-repeat scroll 0 0;
+}
+.container .row .accordian-toggle span {
+  background: url("../img/albmupico.png") no-repeat scroll 0 0;
+}
+.container .row .purchase-list {
+  width: 97%;
+  margin: 0 0 10px;
+  list-style: none;
+}
+.container .row .purchase-list li {
+  width: 100%;
+  margin: 12px 0;
+  padding-bottom: 15px;
+  display: inline-block;
+  border-bottom: 2px solid #dcdcdc;
+}
+.container .row .purchase-list li img {
+  float: left;
+}
+.container .row .purchase-list li .album-wrap {
+  margin-top: 32px;
+  height: 87px;
+}
+.container .row .purchase-list li .album-wrap span {
+  width: 100%;
+  display: inline-block;
+}
+.container .row .purchase-list li .downloadbtn {
+  margin-top: 4%;
+  margin-left: -10px;
+}
+.container .row .purchase-list li .downloadbtn a {
+  float: right;
+  width: 23px;
+  height: 24px;
+  background: url('../img/downloadico.png') no-repeat;
+}
+.container .row .cart-list {
+  width: 97%;
+  margin: 0 0 10px;
+  list-style: none;
+}
+.container .row .cart-list li {
+  width: 100%;
+  margin: 12px 0;
+  padding-bottom: 15px;
+  display: inline-block;
+  border-bottom: 2px solid #dcdcdc;
+}
+.container .row .cart-list li img {
+  float: left;
+}
+.container .row .cart-list li .cart-wrap {
+  margin-top: 32px;
+  height: 87px;
+}
+.container .row .cart-list li .cart-wrap span {
+  width: 100%;
+  display: inline-block;
+}
+.container .row .cart-list li .cartinfotool {
+  margin-top: 4%;
+  margin-left: -10px;
+}
+.container .row .cart-list li .cartinfotool a {
+  float: left;
+  width: 23px;
+  height: 24px;
+  background: url('../img/downloadico.png') no-repeat;
+}
+.container .row .cart-list li .cartinfotool .cart-info {
+  margin-right: 18px;
+  background: url('../img/cartinfo-ico.png') no-repeat;
+}
+.container .row .cart-list li .cartinfotool .cart-remove {
+  background: url('../img/cartremove-ico.png') no-repeat;
+}
+.container .row .cartbutton {
+  margin-bottom: 20px;
+}
+.container .row .cartbutton a.emptycart {
+  padding: 8px 37px;
+  text-decoration: none;
+  color: #1d1d1d;
+  background: url('../img/emptycartbar.png') repeat-x;
+}
+.container .row .cartbutton a.checkout {
+  padding: 8px 37px;
+  text-decoration: none;
+  color: #ffffff;
+  background: url('../img/cartcheckoutbar.png') repeat-x;
+}
+/****end of container ******/
+#footer {
+  background: #222222;
+  margin-left: 0px;
+}
+#footer p {
+  float: left;
+  padding: 4% 29px 0px;
+  color: #787878;
+  font-size: 15px;
+  font-weight: bold;
+}
+#footer a#infibeamlogo {
+  float: left;
+  margin: 22px 22px 22px 9px;
+}
+#footer .terms {
+  padding-top: 33px;
+  color: #787878;
+  font-weight: bold;
+}
+#footer .terms span {
+  margin: 0 20px;
+  font-weight: bold;
+}
+#footer .terms span a {
+  color: #787878;
+  text-decoration: none;
+  cursor: pointer;
+}
+#footer .terms span a:hover {
+  color: #fff;
+}
+#footer .terms span a:active {
+  color: #fff;
+}
+.container .nav-collapse ul.nav li:hover ul {
+  display: block;
+  position: absolute;
+  background: #4E4E4E;
+}
+.container .nav-collapse ul.nav li:hover li a:hover {
+  background: #000;
+}
+.container .row #bollywood-gallery,
+.container .row #regional-gallery,
+.container .row #international-gallery {
+  float: left;
+  margin: 0px 0 2px 30px;
+  padding: 25px 0;
+  min-height: 50px;
+  width: 940px;
+  position: relative;
+  background: #f6f6f6;
+  border-left: none;
+  border-right: none;
+}
+.container .row #bollywood-gallery #bollywood-scrollable,
+.container .row #regional-gallery #regional-scrollable,
+.container .row #international-gallery #international-scrollable {
+  overflow: hidden;
+  position: relative;
+  margin: 0 px;
+}
+.container .row #bollywood-gallery #bollywood-scrollable ul,
+.container .row #regional-gallery #regional-scrollable ul,
+.container .row #international-gallery #international-scrollable ul {
+  list-style: none;
+  clear: both;
+  overflow: hidden;
+  position: relative;
+  width: 2000em;
+}
+.container .row #bollywood-gallery #bollywood-scrollable ul li,
+.container .row #regional-gallery #regional-scrollable ul li,
+.container .row #international-gallery #international-scrollable ul li {
+  float: left;
+  width: 110px;
+  padding: 0 21px 0 0;
+}
+.container .row #bollywood-gallery #bollywood-scrollable ul li .sngtitle,
+.container .row #regional-gallery #regional-scrollable ul li .sngtitle,
+.container .row #international-gallery #international-scrollable ul li .sngtitle {
+  float: left;
+  color: #231f20;
+}
+.container .row #bollywood-gallery #bollywood-scrollable ul li .artistname,
+.container .row #regional-gallery #regional-scrollable ul li .artistname,
+.container .row #international-gallery #international-scrollable ul li .artistname {
+  float: left;
+  color: #828282;
+}
+.container .row #bollywood-gallery a.left,
+.container .row #regional-gallery a.left,
+.container .row #international-gallery a.left {
+  position: absolute;
+  left: -3px;
+  z-index: 1000;
+  background: url("../img/carousel-lft.png") no-repeat scroll 0 0 transparent;
+}
+.container .row #bollywood-gallery a.right,
+.container .row #regional-gallery a.right,
+.container .row #international-gallery a.right {
+  clear: right;
+  right: -4px;
+  margin-right: 0;
+  position: absolute;
+  background: url("../img/carousel-rt.png") no-repeat scroll 0 0 transparent;
+}
+.container .row #bollywood-gallery a.browse,
+.container .row #regional-gallery a.browse,
+.container .row #international-gallery a.browse {
+  height: 28px;
+  width: 20px;
+  top: 36%;
+  cursor: pointer;
+}
+.container .row #bollywood-gallery a.disabled,
+.container .row #regional-gallery a.disabled,
+.container .row #international-gallery a.disabled {
+  cursor: default;
+  opacity: 0.2;
+  filter: alpha(opacity=50);
+}
+#clkadd {
+  position: fixed;
+  top: 50%;
+  right: -999px;
+  padding: 9px 6px;
+  color: #fff;
+  background: #D52224;
+  opacity: 0;
+}

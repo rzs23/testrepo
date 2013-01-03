@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>SPINR</title>
+	<meta charset="utf-8">
+	
+	<!-- CSS -->
+	<!-- <link href="css/bootstrap.css" rel="stylesheet">-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/navigation.css" type="text/css"/>
+	<link rel="stylesheet" href="css/spinr.css" />
+	<link rel="stylesheet" href="css/player.css"  type="text/css" />
+		
+	<!-- JS -->
+	<!-- <link rel="stylesheet/less" type="text/css" href="css/style.less">
+	<script src="js/less.js"></script> -->
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+   <!-- <script src="js/modal.js"></script>	 -->
+	<script defer src="js/jquery.flexslider.js"></script>
+	<script type="text/javascript" src="js/scrollable.js"></script>
+	<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="js/jplayer.playlist.min.js"></script>
+	
+	<script src="js/opera.js"></script>
+	<script type="text/javascript" src="js/cust-player.js"></script>
+    <script type="text/javascript" src="js/data-call.js"></script>
+
+	
+	<script type="text/javascript" charset="utf-8">
+	    var thumbnails,time,hashlink,shwread,goread,tmphs,nontmphs,sidebar_hgt;
+		var region,industry,business,technology;
+    </script>
+</head>
+
+
+<body>
+		<div class="container">
+			<div class="row">
+			   <div class="header">
+					<a href="home.html" class="span2 logo">
+						<h1>SONY</h1>
+					</a>
+					<a href="home.html" class="span2 pull-right">
+						<img alt="logo" src="img/app_icon_sony_48x48.png">
+					</a>
+			   </div>
+			</div>
+	
+			<div class="row">
+			
+			<!--  this is accordian div-->
+					<div class="accordion span3" id="accordion2">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+								TOP TEN
+									<span class="droparrow pull-right"></span>
+								</a>
+							</div>
+							<div id="collapseOne" class="accordion-body collapse">
+								<ul>
+									<li id="top-songs-accordion"><a href="#">Songs</a></li>
+                                    <li id="top-artists-accordion"><a href="#">Artists</a></li>
+									<li id="top-albums-accordion"><a href="#">Albums</a></li>
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+								DISCOVER
+									<span class="droparrow pull-right"></span>
+								</a>
+							</div>
+							<div id="collapseTwo" class="accordion-body collapse">
+								<ul>
+									<li id="discover-songs-accordion"><a href="#">Songs</a></li>
+									<li id="discover-artists-accordion"><a href="#">Artists</a></li>
+									<li id="discover-albums-accordion"><a href="#">Albums</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+								CATEGORIES
+									<span class="droparrow pull-right"></span>
+								</a>
+							</div>
+							<div id="collapseThree" class="accordion-body collapse">
+								<ul>
+								</ul>
+							</div>
+						</div>
+					
+					
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a href="" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2">
+								PLAYLIST
+									<span class="droparrow pull-right"></span>
+								</a>
+							</div>
+						</div>
+						
+						<div id="setting-tab" class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="settings.html">
+								SETTINGS
+									<span class="droparrow pull-right"></span>
+								</a>
+							</div>
+						</div>
+						
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#">
+								EXIT
+									<span class="droparrow pull-right"></span>
+								</a>
+							</div>
+						</div>
+					</div> 	
+				<!--  end of accordian div-->			
+					
+				<!-- main carousel starts -->
+					
+						<div id="main-div" class="row main-carousel">
+								<div class="alphabet"><a>A</a><a>B</a><a>C</a><a>D</a><a>E</a><a>F</a><a>G</a><a>H</a><a>I</a><a>J</a><a>K</a><a>L</a><a>M</a><a>N</a><a>O</a><a>P</a><a>Q</a><a>R</a><a>S</a><a>T</a><a>U</a><a>V</a><a>W</a><a>X</a><a>Y</a><a>Z</a></div>
+						</div>
+						
+						
+
+					
+				<!-- main carousel ends -->
+			</div>
+			
+			<!-- Player Markup -->
+			<div class="row">
+				<div id="jp_container_N" class="span10 jp-video jp-video-270p">
+					<div class="jp-type-playlist">
+						<div id="jquery_jplayer_N" class="jp-jplayer"></div>
+						<!-- playlist modal -->
+						<div class="jp-playlist">
+							
+							<ul class="">
+								<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+								<li></li>
+							</ul>
+							<a class="saveplaylist"></a>
+							<a class="deleteplaylist" href=""></a>
+							<a class="backplaylist"></a> 
+						</div>
+										
+						<div class="jp-gui">
+							<div class="jp-video-play">
+								<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+							</div>
+							<div class="jp-interface">
+								<div class="song-thumb">
+									<!-- player song thumbnail -->
+									<img src="" />
+								</div>
+								<div class="albmtitle">
+									<h5>
+									<!-- player song title -->
+									</h5>
+									<p><i id="text_msg" style="font-size:12px; margin-left:-20px; float:right"></i></p>
+									
+								</div>
+								<div class="jp-controls-holder">
+									<ul class="jp-controls">
+										<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+										<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+										<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+										<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+										<!--<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+										<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li> 
+										<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li> -->
+										<!--<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li> -->
+									</ul>
+									<!--<div class="jp-volume-bar">
+										<div class="jp-volume-bar-value"></div>
+										</div> -->
+												
+								</div>
+								<div class="jp-progress">
+									<div class="jp-seek-bar">
+										<div class="jp-play-bar"></div>
+									</div>
+								</div>
+								<div class="jp-current-time"></div>
+								<div class="jp-duration"></div>
+											
+								<div class="jp-title">
+									<ul>
+										<li></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end of player markup -->
+		</div>	
+		<!-- end of container class -->
+		<div id="clkadd">Song already exist in playlist! </div>
+		<div id="app-settings">
+			<ul>
+			<li><a>Version: 1.2.3</a></li>
+			<li><a>privacy policy</a></li>
+			<li><a>downloads folder</a></li>
+			<li><a>Customer support: abc@gmail.com</a></li>
+			</ul>
+		</div>
+</body>
+</html>
