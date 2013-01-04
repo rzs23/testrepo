@@ -14,7 +14,17 @@ var disc_sng =true; var disc_alb =true; var disc_art =true;
 $(document).ready(function(){
 $('.alphabet').hide();
 
- 
+		/*** TOGGLE ACCORDIAN COLOR ON SELECTED STATE *******/
+			$('.collapse').live('show', function(){
+			    //$(this).parent().find('a').addClass('open'); //add active state to button on open
+			    $(this).parent().find('.accordion-heading').children('a').addClass('open'); //add active state to button on open
+				
+			});
+
+			$('.collapse').live('hide', function(){
+			    $(this).parent().find('.accordion-heading').children('a').removeClass('open'); //remove active state to button on close
+			});
+
 	if($('.flexslider').length)
 		{ flexslider = $('.flexslider'); }
 	else
