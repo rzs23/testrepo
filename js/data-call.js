@@ -85,12 +85,21 @@ $('.alphabet').hide();
 
 	/***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
 	$('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function(){
-	
+
+                console.log("tmpflag="+tmpflag+"settflag="+settflag);
+
+                if (! $(".jp-playlist").is(":hidden")) {
+		    $(".backplaylist").click();
+		    return;
+                }
+
 		if(settflag == false){
 			$('#app-settings').animate({top:'-85%'},'slow',function(){
-			settflag = true;
+			    settflag = true;
+
 			});
 		}
+                
 		  
 	    if($('.jp-playlist ul li').length == 0)
 		{
@@ -100,17 +109,29 @@ $('.alphabet').hide();
 		
 		$('.jp-playlist').show().animate({left:'21%'},'slow',function(){
 		     tmpflag = false;
-		});	
+		});
+
 	});
 	
 	/** ----------------------------DISPLAY SETTINGS------------------------------------------------------****/
 	$('#accordion2 .accordion-group:eq(4)').click(function(){
+            console.log("tmpflag="+tmpflag+"settflag="+settflag);
+
+	    if(parseInt($("#app-settings").css("top"),10) > 0) {
+
+	         $('#app-settings').animate({top:'-85%'},'slow',function(){
+			    settflag = true;
+
+		 });
+		return;
+            }
 	    if(tmpflag==false){
 			$('.jp-playlist').animate({left:'100%'},'slow',function(){
 			    tmpflag = true;
 				$('.jp-playlist').hide();
 			});	
 		}
+                
 		$('#app-settings').animate({top:'8%'},'slow',function(){
 			settflag = false;
 		});
