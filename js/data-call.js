@@ -15,6 +15,13 @@ $(document).ready(function(){
 $('.alphabet').hide();
 
 		/*** TOGGLE ACCORDIAN COLOR ON SELECTED STATE *******/
+		    $('.accordion-body ul li a').each(function(){
+			  $(this).click(function(){
+			   $('.accordion-body ul li a').css({'color':'#fff'});
+			     $(this).css({'color':'red'});
+			    })
+			 });
+		
 			$('.collapse').live('show', function(){
 			    //$(this).parent().find('a').addClass('open'); //add active state to button on open
 			    $(this).parent().find('.accordion-heading').children('a').addClass('open'); //add active state to button on open
@@ -23,7 +30,9 @@ $('.alphabet').hide();
 
 			$('.collapse').live('hide', function(){
 			    $(this).parent().find('.accordion-heading').children('a').removeClass('open'); //remove active state to button on close
+			    $('.accordion-body ul li a').css({'color':'#fff'});
 			});
+			
 
 	if($('.flexslider').length)
 		{ flexslider = $('.flexslider'); }
