@@ -99,6 +99,7 @@ div.jp-audio-stream div.jp-type-single div.jp-interface {
 
 div.jp-video div.jp-interface {
 	float: left;
+	background: url("../img/player-bg.png") repeat scroll 0 0;
 }
 div.jp-video div.jp-interface .song-thumb{ float: left; height: 124px; width: 149px;}
 div.jp-video div.jp-interface .song-thumb img{ float: left; width: 149px; height: 124px; text-indent: -9999px; background: url('../img/default_thumb.png') no-repeat; text-indent:-9999px}
@@ -419,6 +420,8 @@ display:none;
     top: 53px !important;
     width: 74%;
 }
+
+div.jp-playlist p{  width: 75%; position: absolute;  left: 0; top: 0; color: #1D1D1D; font-size: 38px;} 
 div.jp-type-single div.jp-title,
 div.jp-type-playlist div.jp-title,
 div.jp-type-single div.jp-playlist {
