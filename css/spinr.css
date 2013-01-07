@@ -43,12 +43,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f60100', end
 .container .row .accordion .accordion-group .accordion-heading a{border: none; border-radius:0; box-shadow: none; color: red; outline: medium none;
 													padding: 13px 15px; text-align: center; text-shadow: none; }
 													
-.container .row .accordion .accordion-group .accordion-heading a:hover,.container .row .accordion .accordion-group .accordion-heading a:active{
-			color: #fff; text-decoration: none; font-weight:bold;
-}	
+.container .row .accordion .accordion-group .accordion-heading a:hover,.container .row .accordion .accordion-group .accordion-heading a:active,
 .container .row .accordion .accordion-group .accordion-heading a.open{
 			color: #fff; text-decoration: none; font-weight:bold;
-}												
+}	
+											
 .container .row .accordion .accordion-group:nth-child(1) .accordion-heading a{ 
 		background: url('../img/top10_icon.png') no-repeat, -o-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* Opera 11.10+ */
 		background: url('../img/top10_icon.png') no-repeat, -ms-linear-gradient(top, #101010 0%,#1b1b1b 50%,#1f1f1f 54%,#272727 100%); /* IE10+ */
@@ -86,14 +85,7 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 }
 
 
-.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a:active{ 
-				background: url('../img/top10_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
-				background: url('../img/top10_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
-				background: url('../img/top10_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/top10_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
-				background: url('../img/top10_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/top10_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}
+.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(1) .accordion-heading a:active,
 .container .row .accordion .accordion-group:nth-child(1) .accordion-heading a.open{ 
 				background: url('../img/top10_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
 				background: url('../img/top10_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
@@ -104,7 +96,8 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 				}
 	
 				
-.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a:active{ 
+.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a:active,
+.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a.open{ 
 				background: url('../img/discover_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
 				background: url('../img/discover_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
 				background: url('../img/discover_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
@@ -113,24 +106,8 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 				background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				}
 
-.container .row .accordion .accordion-group:nth-child(2) .accordion-heading a.open{ 
-background: url('../img/discover_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
-background: url('../img/discover_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
-background: url('../img/discover_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-background: url('../img/discover_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
-background: url('../img/discover_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-}
 				
-.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a:active{ 
-				background: url('../img/category.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
-				background: url('../img/category.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
-				background: url('../img/category.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/category.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
-				background: url('../img/category.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/category.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}
-
+.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(3) .accordion-heading a:active,
 .container .row .accordion .accordion-group:nth-child(3) .accordion-heading a.open{ 
 				background: url('../img/category.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
 				background: url('../img/category.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
@@ -139,16 +116,8 @@ background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom
 				background: url('../img/category.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				background: url('../img/category.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				}
-				
-.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a:active{ 
-				background: url('../img/playlist_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
-				background: url('../img/playlist_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
-				background: url('../img/playlist_icon.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/playlist_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
-				background: url('../img/playlist_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/playlist_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}	
-				
+
+.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(4) .accordion-heading a:active,
 .container .row .accordion .accordion-group:nth-child(4) .accordion-heading a.open{ 
 				background: url('../img/playlist_icon.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
 				background: url('../img/playlist_icon.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
@@ -156,17 +125,9 @@ background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom
 				background: url('../img/playlist_icon.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
 				background: url('../img/playlist_icon.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				background: url('../img/playlist_icon.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}				
+				}	
 
-.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a:active{ 
-				background: url('../img/setting.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
-				background: url('../img/setting.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
-				background: url('../img/setting.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/setting.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
-				background: url('../img/setting.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/setting.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}
-
+.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(5) .accordion-heading a:active,
 .container .row .accordion .accordion-group:nth-child(5) .accordion-heading a.open{ 
 				background: url('../img/setting.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
 				background: url('../img/setting.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
@@ -174,9 +135,10 @@ background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom
 				background: url('../img/setting.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
 				background: url('../img/setting.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				background: url('../img/setting.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}				
+				}
 
-.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a:active{ 
+				.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a:hover,.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a:active,
+				.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a.open{ 
 				background: url('../img/exit_btn.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
 				background: url('../img/exit_btn.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
 				background: url('../img/exit_btn.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
@@ -184,16 +146,7 @@ background: url('../img/discover_icon.png') no-repeat, linear-gradient(to bottom
 				background: url('../img/exit_btn.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
 				}
-
-
-.container .row .accordion .accordion-group:nth-child(6) .accordion-heading a.open{ 
-				background: url('../img/exit_btn.png') no-repeat, -moz-linear-gradient(top,  #f60100 1%, #d60508 50%, #d60508 51%, #b10b0f 100%); 
-				background: url('../img/exit_btn.png') no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f60100), color-stop(50%,#d60508), color-stop(51%,#d60508), color-stop(100%,#b10b0f)); 
-				background: url('../img/exit_btn.png') no-repeat, -webkit-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/exit_btn.png') no-repeat, -o-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%);
-				background: url('../img/exit_btn.png') no-repeat, -ms-linear-gradient(top,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom,  #f60100 1%,#d60508 50%,#d60508 51%,#b10b0f 100%); 
-				}				
+		
 
 .container .row #main-div #sec-div{ width: 100%; position: absolute; top: 0px; right: -100%; }	
 
