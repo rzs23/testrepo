@@ -42,7 +42,7 @@ $('.alphabet').hide();
 	$(document).keydown(function(event) {
 		if(event.keyCode == VK_BACK_SPACE || event.keyCode == 27)
 		{
-			console.log('backspace clicked');
+			//console.log('backspace clicked');
 			//event.preventDefault();
 			//window.close();
 			if(albumdetflag == 2)
@@ -86,7 +86,7 @@ $('.alphabet').hide();
 	/***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
 	$('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function(){
 
-                console.log("tmpflag="+tmpflag+"settflag="+settflag);
+                //console.log("tmpflag="+tmpflag+"settflag="+settflag);
 
                 if (! $(".jp-playlist").is(":hidden")) {
 		    $(".backplaylist").click();
@@ -115,7 +115,7 @@ $('.alphabet').hide();
 	
 	/** ----------------------------DISPLAY SETTINGS------------------------------------------------------****/
 	$('#accordion2 .accordion-group:eq(4)').click(function(){
-            console.log("tmpflag="+tmpflag+"settflag="+settflag);
+            //console.log("tmpflag="+tmpflag+"settflag="+settflag);
 
 	    if(parseInt($("#app-settings").css("top"),10) > 0) {
 
@@ -146,9 +146,9 @@ $('.alphabet').hide();
 
 
 /***----------------------------------------------------- CATEGORIES API CALL ------------------------------------------------------***/
-		var url1 = baseurl + genreApi + "?channel_id=" + channel_id; console.log(url1);
-		$.getJSON("data/genre_list.js",function(data){
-			var jsonObj = data.genres;
+		var url1 = baseurl + genreApi + ".js?channel_id=" + channel_id+"&callback=?"; 
+		$.getJSON(url1,function(data){
+			var jsonObj = $.parseJSON(data.genres);
 			var count=0;
 			$.each(jsonObj['genre_name'], function(i,item){
 				count = i + 1;
@@ -178,7 +178,7 @@ $('.alphabet').hide();
 						$(".album-detail-wrap").remove();
 						
 						var genre = $(this).text();
-						var url = baseurl + allGenreApi + "?channel_id=" + channel_id + "&genre=" + genre; console.log(url); 
+						var url = baseurl + allGenreApi + "?channel_id=" + channel_id + "&genre=" + genre; //console.log(url); 
 						$.getJSON("data/top-cat-1.js",function(data){
 								var temp = data.songs_by_category[0];
 								var obj = temp.genre;
@@ -228,9 +228,10 @@ $('.alphabet').hide();
 		flexRemove();
 		$(".album-detail-wrap").remove();
 		
-		var url = baseurl + tagApi + "?channel_id=" + channel_id + "&tag=top20&product_type=item"; console.log(url);
-		$.getJSON("data/new_songs.js",function(data){
-			var jsonObj = data['items_by_tag'];
+		var url = baseurl + tagApi + ".js?channel_id=" + channel_id + "&tag=top20&product_type=item&callback=?"; //console.log(url);
+		$.getJSON(url,function(data){
+			var jsonObj = $.parseJSON(data['items_by_tag']);
+                        console.log(jsonObj);
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
@@ -275,10 +276,12 @@ $('.alphabet').hide();
 		flexRemove();
 		$(".album-detail-wrap").remove();
 		
-		var url = baseurl + tagApi + "?channel_id=" + channel_id + "&tag=top20&product_type=contributor"; console.log(url);
-		$.getJSON("data/artists.js",function(data){
-			var jsonObj = data['items_by_tag'];
+		var url = baseurl + tagApi + ".js?channel_id=" + channel_id + "&tag=top20&product_type=contributor&callback=?"; //console.log(url);
+	        console.log("--------->"+url);
+		$.getJSON(url,function(data){
+			var jsonObj = $.parseJSON(data['items_by_tag']);//$.parseJSON(data['items_by_tag']);
 			var len = jsonObj.length;
+                        console.log('foooooooooooooo '+len);
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
 			createOtherTemplate();
@@ -286,7 +289,7 @@ $('.alphabet').hide();
 			{
 				$("#other-carousel").append('<li id="page' + c + '"></li>');
 			}
-			$.each(data['items_by_tag'], function(i,item){
+			$.each(jsonObj, function(i,item){
 				var j = i +1;
 				var k="#top-artists" + j;
 				var x = Math.floor(j/6);
@@ -304,14 +307,15 @@ $('.alphabet').hide();
 			$('#other-carousel li div').each(function(){
 				$(this).click(function(){
 				    
-					var temp = $('p',$(this)).html(); console.log(temp);
+					var temp = $('p',$(this)).html(); //console.log(temp);
 					$(flexslider).animate({'left':'-104%'},200,function(){
 						//destroy divisions and flexsliders
 						flex2Remove();
-						var url2 = baseurl + artistApi + "?channel_id=" + channel_id + "&artist_id=" + temp; console.log(url2);
-						$.getJSON("data/album1.js",function(data){
+						var url2 = baseurl + artistApi + ".js?channel_id=" + channel_id + "&artist_id=" + temp+"&callback=?"; //console.log(url2);
+
+						$.getJSON(url2,function(data){
 							
-							var list = data['albums_list'];
+							var list = $.parseJSON(data['albums_list']);
 							var len = list.length;
 							var p = (len/6) + 1;
 							var pages = Math.floor(p);
@@ -320,7 +324,7 @@ $('.alphabet').hide();
 							{
 								$("#sec-carousel").append('<li id="page-' + c + '"></li>');
 							}
-							$.each(data['albums_list'], function(z,item_cat){
+							$.each(list, function(z,item_cat){
 								var j2 = z +1;
 								var k="#album-" + j2;
 								var x = Math.floor(j2/6);
@@ -336,13 +340,15 @@ $('.alphabet').hide();
 							/***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
 							$('#sec-carousel li div').each(function(){
 								$(this).live('click',function(){
+                                                                        console.log('foooo');
 									var tmp1 = $('p',$(this)).html();
 									var tmp2 = $('p:eq(1)',$(this)).html();
 									$("#flex2").animate({'left':'-104%'},200,function(){
 										//destroy divisions and flexsliders
 										//flex2Remove();
-										var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; console.log(url3);
-										$.getJSON("data/song_list.js",function(data){
+										var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; //console.log(url3);
+									        console.log("^^^^^^^^^^^^^  "+url3);
+										$.getJSON("data/sos_list.js",function(data){
 											var details = data.albums_details;
 											$(".album-detail-wrap div img").attr("src", details.image_uri);
 											$("#song-detail1").append(details.title);
@@ -393,9 +399,9 @@ $('.alphabet').hide();
 			flex2Remove();
 			$(".album-detail-wrap").remove();
 		
-		var url = baseurl + tagApi + "?channel_id=" + channel_id + "&tag=top20&product_type=collection"; console.log(url);
-		$.getJSON("data/albums.js",function(data){
-			var jsonObj = data['items_by_tag'];
+		var url = baseurl + tagApi + ".js?channel_id=" + channel_id + "&tag=top20&product_type=collection&callback=?"; //console.log(url);
+		$.getJSON(url,function(data){
+			var jsonObj = $.parseJSON(data['items_by_tag']);
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
@@ -404,7 +410,7 @@ $('.alphabet').hide();
 			{
 				$("#other-carousel").append('<li id="page' + c + '"></li>');
 			}
-			$.each(data['items_by_tag'], function(i,item){
+			$.each(jsonObj, function(i,item){
 				var j = i +1;
 				var k="#top-albums" + j;
 				var x = Math.floor(j/6);
@@ -423,15 +429,15 @@ $('.alphabet').hide();
 					var tmp1 = $('p',$(this)).html();
 					var tmp2 = $('p:eq(1)',$(this)).html();
 					$(flexslider).animate({'left':'-104%'},200,function(){
-						var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; console.log(url3);
-						$.getJSON("data/song_list.js",function(data){
+						var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp2 + "&label_collection_code=" + tmp1+"&callback=?"; console.log(url3);
+						$.getJSON(url3,function(data){
 							var details = data.albums_details;
 							$(".album-detail-wrap div img").attr("src", details.image_uri);
 							$("#song-detail1").append(details.title);
 							$("#song-detail2").append(details.primary_artist);
 							$("#song-detail3").append(details.year);
 							//$("#song-details").append(details.primary_copyright_owner);
-							$.each(data['album_tracks'], function(p,item1){
+							$.each($.parseJSON(data['album_tracks']), function(p,item1){
 								var song_id = item1.id;
 								$("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
 							});
@@ -455,15 +461,15 @@ $('.alphabet').hide();
 					var url;
 					if( disc_sng == false)
 					{
-						url = baseurl + songsApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; console.log(url);
+						url = baseurl + songsApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; //console.log(url);
 					}
 					else if (disc_alb == false)
 					{
-						url = baseurl + albumApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; console.log(url);
+						url = baseurl + albumApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; //console.log(url);
 					}
 					else if (disc_art == false)
 					{
-						url = baseurl + artistApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; console.log(url);
+						url = baseurl + artistApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; //console.log(url);
 					}
 					$.getJSON("data/A.js",function(data){
 						var jsonObj = data['songs_list_by_alphabet'];
@@ -521,7 +527,7 @@ $('.alphabet').hide();
 		flexRemove();
 		$(".album-detail-wrap").remove();
 		
-		var url = baseurl + songsApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; console.log(url);
+		var url = baseurl + songsApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
 		$.getJSON("data/A.js",function(data){
 			var jsonObj = data['songs_list_by_alphabet'];
 			var len = jsonObj.length;
@@ -572,7 +578,7 @@ $('.alphabet').hide();
 		flexRemove();
 		$(".album-detail-wrap").remove();
 		
-		var url = baseurl + artistApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; console.log(url);
+		var url = baseurl + artistApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
 		$.getJSON("data/artists.js",function(data){
 			var jsonObj = data['artists'];
 			var len = jsonObj.length;
@@ -600,12 +606,11 @@ $('.alphabet').hide();
 			
 			$('#other-carousel li div').each(function(){
 				$(this).click(function(){
-				    
-					var temp = $('p',$(this)).html(); console.log(temp);
+					var temp = $('p',$(this)).html(); //console.log(temp);
 					$(flexslider).animate({'left':'-104%'},200,function(){
 						//destroy divisions and flexsliders
 						flex2Remove();
-						var url2 = baseurl + artistApi + "?channel_id=" + channel_id + "&artist_id=" + temp; console.log(url2);
+						var url2 = baseurl + artistApi + "?channel_id=" + channel_id + "&artist_id=" + temp; //console.log(url2);
 						$.getJSON("data/album1.js",function(data){
 							
 							var list = data['albums_list'];
@@ -638,7 +643,7 @@ $('.alphabet').hide();
 									$("#flex2").animate({'left':'-104%'},200,function(){
 										//destroy divisions and flexsliders
 										//flex2Remove();
-										var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; console.log(url3);
+										var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; //console.log(url3);
 										$.getJSON("data/song_list.js",function(data){
 											var details = data.albums_details;
 											$(".album-detail-wrap div img").attr("src", details.image_uri);
@@ -693,7 +698,7 @@ $('.alphabet').hide();
 			flex2Remove();
 			$(".album-detail-wrap").remove();
 		
-		var url = baseurl + albumApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; console.log(url);
+		var url = baseurl + albumApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
 		$.getJSON("data/albums.js",function(data){
 			var jsonObj = data['albums'];
 			var len = jsonObj.length;
@@ -724,7 +729,7 @@ $('.alphabet').hide();
 					var tmp1 = $('p',$(this)).html();
 					var tmp2 = $('p:eq(1)',$(this)).html();
 					$(flexslider).animate({'left':'-104%'},200,function(){
-						var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; console.log(url3);
+						var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; //console.log(url3);
 						$.getJSON("data/song_list.js",function(data){
 							var details = data.albums_details;
 							$(".album-detail-wrap div img").attr("src", details.image_uri);
