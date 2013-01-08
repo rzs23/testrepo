@@ -616,14 +616,14 @@ $('.alphabet').hide();
 			
 			$('#other-carousel li div').each(function(){
 				$(this).click(function(){
-					var temp = $('p',$(this)).html(); //console.log(temp);
+					var temp = $('p',$(this)).html(); console.log(temp);
 					$(flexslider).animate({'left':'-104%'},200,function(){
 						//destroy divisions and flexsliders
 						flex2Remove();
-						var url2 = baseurl + artistApi + "?channel_id=" + channel_id + "&artist_id=" + temp; //console.log(url2);
-						$.getJSON("data/album1.js",function(data){
+						var url2 = baseurl + artistApi + ".js?channel_id=" + channel_id + "&artist_id=" + temp+"&callback=?"; //console.log(url2);
+						$.getJSON(url2,function(data){
 							
-							var list = data['albums_list'];
+							var list = $.parseJSON(data['albums_list']);
 							var len = list.length;
 							var p = (len/6) + 1;
 							var pages = Math.floor(p);
@@ -632,7 +632,7 @@ $('.alphabet').hide();
 							{
 								$("#sec-carousel").append('<li id="page-' + c + '"></li>');
 							}
-							$.each(data['albums_list'], function(z,item_cat){
+							$.each(list, function(z,item_cat){
 								var j2 = z +1;
 								var k="#album-" + j2;
 								var x = Math.floor(j2/6);
@@ -653,15 +653,15 @@ $('.alphabet').hide();
 									$("#flex2").animate({'left':'-104%'},200,function(){
 										//destroy divisions and flexsliders
 										//flex2Remove();
-										var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; //console.log(url3);
-										$.getJSON("data/song_list.js",function(data){
-											var details = data.albums_details;
+										var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2+"&callback=?"; //console.log(url3);
+										$.getJSON(url3,function(data){
+											var details = $.parseJSON(data.albums_details);
 											$(".album-detail-wrap div img").attr("src", details.image_uri);
 											$("#song-detail1").append(details.title);
 											$("#song-detail2").append(details.primary_artist);
 											$("#song-detail3").append(details.year);
 											//$("#song-details").append(details.primary_copyright_owner);
-											$.each(data['album_tracks'], function(p,item1){
+											$.each($.parseJSON(data['album_tracks']), function(p,item1){
 												var song_id = item1.id;
 												$("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
 											});
@@ -742,15 +742,15 @@ $('.alphabet').hide();
 					var tmp1 = $('p',$(this)).html();
 					var tmp2 = $('p:eq(1)',$(this)).html();
 					$(flexslider).animate({'left':'-104%'},200,function(){
-						var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; //console.log(url3);
-						$.getJSON("data/song_list.js",function(data){
-							var details = data.albums_details;
+						var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp2 + "&label_collection_code=" + tmp1 + "&callback=?"; //console.log(url3);
+						$.getJSON(url3,function(data){
+							var details = $.parseJSON(data.albums_details);
 							$(".album-detail-wrap div img").attr("src", details.image_uri);
 							$("#song-detail1").append(details.title);
 							$("#song-detail2").append(details.primary_artist);
 							$("#song-detail3").append(details.year);
 							//$("#song-details").append(details.primary_copyright_owner);
-							$.each(data['album_tracks'], function(p,item1){
+							$.each($.parseJSON(data['album_tracks']), function(p,item1){
 								var song_id = item1.id;
 								$("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
 							});
