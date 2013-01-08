@@ -372,7 +372,7 @@ $('.alphabet').hide();
 							});
 						});
 											
-						$('#sec-div').animate({right:'0%'},500,function(){
+ $('#sec-div').animate({right:'0%'},500,function(){
 						    albumlstflag = false;
 						   	
 						});
@@ -437,7 +437,7 @@ $('.alphabet').hide();
 						var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp2 + "&label_collection_code=" + tmp1+"&callback=?"; console.log(url3);
 						$.getJSON(url3,function(data){
 						    $('#circularG').hide();
-							var details = data.albums_details;
+							var details = $.parseJSON(data.albums_details);
 							$(".album-detail-wrap div img").attr("src", details.image_uri);
 							$("#song-detail1").append(details.title);
 							$("#song-detail2").append(details.primary_artist);
@@ -514,9 +514,10 @@ $('.alphabet').hide();
 	
 		
 	$('#discover-songs-accordion').click(function(){
-		disc_sng = false;
-		disc_art = true;
-		disc_alb = true;
+	        console.log("Discover Songs");
+		disc_sng = true;
+		disc_art = false;
+		disc_alb = false;
 	    /** Hide playlist on Top songs accordian click *****/
 								 if(tmpflag==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
@@ -566,9 +567,10 @@ $('.alphabet').hide();
 /***------------------------------------------------------------- DISCOVER ARTISTS API CALL -------------------------------------------------------------------****/	
 	
 	$('#discover-artists-accordion').click(function artistsClick(){
-		disc_sng = true;
-		disc_art = false;
-		disc_alb = true;
+	        console.log("Discover Artists");
+		disc_sng = false;
+		disc_art = true;
+		disc_alb = false;
 		  /** Hide playlist on Top ten > Artists accordian click *****/
 								 if(tmpflag==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
@@ -686,9 +688,10 @@ $('.alphabet').hide();
 	
 /***----------------------------------------- DISCOVER ALBUMS API CALL -----------------------------------------------------****/	
 	$('#discover-albums-accordion').click(function(){
-		disc_sng = true;
-		disc_art = true;
-		disc_alb = false;
+	        console.log("Discover Albums");
+		disc_sng = false;
+		disc_art = false;
+		disc_alb = true;
 	    /** Hide playlist on Top ten > albums accordian click *****/
 								 if(tmpflag==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
@@ -797,7 +800,7 @@ function createSongTemplate()
 function createOtherTemplate()
 {
 	$("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>'+
-	'<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="thumb" />'+
+	'<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />'+
 	'<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>'+
 	'<div class="span9 song-item" id="song-play"></div></div>');
 }
