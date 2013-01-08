@@ -534,10 +534,10 @@ $('.alphabet').hide();
 		flexRemove();
 		$(".album-detail-wrap").remove();
 		$("#circularG").show();
-		var url = baseurl + songsApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
-		$.getJSON("data/A.js",function(data){
+		var url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&songs_limit=20&callback=?"; //console.log(url);
+		$.getJSON(url,function(data){
 		    $("#circularG").hide();
-			var jsonObj = data['songs_list_by_alphabet'];
+			var jsonObj = $.parseJSON(data['tracks']);
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
@@ -587,10 +587,10 @@ $('.alphabet').hide();
 		flexRemove();
 		$(".album-detail-wrap").remove();
 		$("#circularG").show();
-		var url = baseurl + artistApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
-		$.getJSON("data/artists.js",function(data){
+		var url = baseurl + artistApi + ".js?channel_id=" + channel_id + "&songs_limit=20&callback=?"; //console.log(url);
+		$.getJSON(url,function(data){
 		$("#circularG").hide();
-			var jsonObj = data['artists'];
+			var jsonObj = $.parseJSON(data['artists']);
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
@@ -599,7 +599,7 @@ $('.alphabet').hide();
 			{
 				$("#other-carousel").append('<li id="page' + c + '"></li>');
 			}
-			$.each(data['artists'], function(i,item){
+			$.each(jsonObj, function(i,item){
 				var j = i +1;
 				var k="#top-artists" + j;
 				var x = Math.floor(j/6);
@@ -710,10 +710,10 @@ $('.alphabet').hide();
 			$(".album-detail-wrap").remove();
 			$("#circularG").show();
 		
-		var url = baseurl + albumApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
-		$.getJSON("data/albums.js",function(data){
+		var url = baseurl + albumApi + ".js?channel_id=" + channel_id + "&limit=20&callback=?"; //console.log(url);
+		$.getJSON(url,function(data){
 		$("#circularG").hide();
-			var jsonObj = data['albums'];
+			var jsonObj = $.parseJSON(data['albums_list']);
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
@@ -723,7 +723,7 @@ $('.alphabet').hide();
 			{
 				$("#other-carousel").append('<li id="page' + c + '"></li>');
 			}
-			$.each(data['albums'], function(i,item){
+			$.each(jsonObj, function(i,item){
 				var j = i +1;
 				var k="#top-albums" + j;
 				var x = Math.floor(j/6);
