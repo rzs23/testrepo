@@ -227,9 +227,10 @@ $('.alphabet').hide();
 		//destroy divisions and flexsliders
 		flexRemove();
 		$(".album-detail-wrap").remove();
-		
+		$("#circularG").show();
 		var url = baseurl + tagApi + ".js?channel_id=" + channel_id + "&tag=top20&product_type=item&callback=?"; //console.log(url);
 		$.getJSON(url,function(data){
+		     $("#circularG").hide();
 			var jsonObj = $.parseJSON(data['items_by_tag']);
                         console.log(jsonObj);
 			var len = jsonObj.length;
@@ -275,10 +276,11 @@ $('.alphabet').hide();
 		//destroy divisions and flexsliders
 		flexRemove();
 		$(".album-detail-wrap").remove();
-		
+		$("#circularG").show();
 		var url = baseurl + tagApi + ".js?channel_id=" + channel_id + "&tag=top20&product_type=contributor&callback=?"; //console.log(url);
 	        console.log("--------->"+url);
 		$.getJSON(url,function(data){
+		$("#circularG").hide();
 			var jsonObj = $.parseJSON(data['items_by_tag']);//$.parseJSON(data['items_by_tag']);
 			var len = jsonObj.length;
                         console.log('foooooooooooooo '+len);
@@ -398,9 +400,11 @@ $('.alphabet').hide();
 			flexRemove();
 			flex2Remove();
 			$(".album-detail-wrap").remove();
+			$("#circularG").show();
 		
 		var url = baseurl + tagApi + ".js?channel_id=" + channel_id + "&tag=top20&product_type=collection&callback=?"; //console.log(url);
 		$.getJSON(url,function(data){
+		$("#circularG").hide();
 			var jsonObj = $.parseJSON(data['items_by_tag']);
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
@@ -429,8 +433,10 @@ $('.alphabet').hide();
 					var tmp1 = $('p',$(this)).html();
 					var tmp2 = $('p:eq(1)',$(this)).html();
 					$(flexslider).animate({'left':'-104%'},200,function(){
+					    $('#circularG').show();
 						var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp2 + "&label_collection_code=" + tmp1+"&callback=?"; console.log(url3);
 						$.getJSON(url3,function(data){
+						    $('#circularG').hide();
 							var details = data.albums_details;
 							$(".album-detail-wrap div img").attr("src", details.image_uri);
 							$("#song-detail1").append(details.title);
@@ -526,9 +532,10 @@ $('.alphabet').hide();
 		//destroy divisions and flexsliders
 		flexRemove();
 		$(".album-detail-wrap").remove();
-		
+		$("#circularG").show();
 		var url = baseurl + songsApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
 		$.getJSON("data/A.js",function(data){
+		    $("#circularG").hide();
 			var jsonObj = data['songs_list_by_alphabet'];
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
@@ -577,9 +584,10 @@ $('.alphabet').hide();
 		//destroy divisions and flexsliders
 		flexRemove();
 		$(".album-detail-wrap").remove();
-		
+		$("#circularG").show();
 		var url = baseurl + artistApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
 		$.getJSON("data/artists.js",function(data){
+		$("#circularG").hide();
 			var jsonObj = data['artists'];
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
@@ -697,9 +705,11 @@ $('.alphabet').hide();
 			flexRemove();
 			flex2Remove();
 			$(".album-detail-wrap").remove();
+			$("#circularG").show();
 		
 		var url = baseurl + albumApi + "?channel_id=" + channel_id + "&start_alpha=A&songs_limit=50"; //console.log(url);
 		$.getJSON("data/albums.js",function(data){
+		$("#circularG").hide();
 			var jsonObj = data['albums'];
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
