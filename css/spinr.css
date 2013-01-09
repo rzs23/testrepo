@@ -26,7 +26,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f60100', end
 
 .container .row .home-accordian{ height: 200px; margin:0px 14px 0px 0px;}
 /****************************************** HOME PAGE STYLES *******************************************************/
-.container .row .main-carousel{ overflow: hidden; margin-left: 0px;  position: relative;}
+.container .row .main-carousel{ overflow: hidden; margin-left: 0px;  position: relative; }
 .container .row .bollyheader, .container .row .regheader, .container .row .intheader{ width: 930px; margin-bottom: 0px; padding: 5px; color: #fff; font-size: 15px; font-weight: normal; background: url("../img/stripes-bar.jpg") repeat scroll 0 0 ;}
 
 .container .row .accordion{ margin: 0 15px 0 0; height: 493px; background: url('../img/cat-bg.png') repeat-y;}
@@ -171,7 +171,7 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 
 
 
-#circularG{position:relative;width:128px; height:128px; margin-left: 37%; margin-top: 15%;z-index: 9999;}
+#circularG{position:absolute; width:128px; height:128px; margin-left: 37%; margin-top: 15%;z-index: 9999;}
 
 .circularG{
 position:absolute;
