@@ -304,8 +304,7 @@ $('.alphabet').hide();
 			});
 			flexInit();
 			getAlbumsOfArtist("other-carousel");
-
-		});
+    	});
 	});
 	
 /***----------------------------------------- TOP ALBUMS API CALL -----------------------------------------------------****/	
@@ -352,9 +351,10 @@ $('.alphabet').hide();
 				$(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.label_collection_code + '</p><p class="hidden">' + item.id + '</p></div>');
 			});
 			flexInit();
-                        
+                   
 			getSongsOfAlbum("other-carousel");
 				
+
 		});
 	});
 	
@@ -699,10 +699,11 @@ function getAlbumsOfArtist(div_id) {
 					$(flexslider).animate({'left':'-104%'},200,function(){
 						//destroy divisions and flexsliders
 						flex2Remove();
+						$('#circularG').show();
 						var url2 = baseurl + artistApi + ".js?channel_id=" + channel_id + "&artist_id=" + temp+"&callback=?"; //console.log(url2);
 
 						$.getJSON(url2,function(data){
-							
+							$('#circularG').hide();
 							var list = $.parseJSON(data['albums_list']);
 							var len = list.length;
 							var p = (len/6) + 1;
