@@ -304,7 +304,8 @@ $('.alphabet').hide();
 			});
 			flexInit();
 			
-			/***------------ GETTING ALBUMS OF THE ARTIST -------------***/
+			//getAlbumsOfArtist("other-carousel");
+/***------------ GETTING ALBUMS OF THE ARTIST -------------***/
 			
 			$('#other-carousel li div').each(function(){
 				$(this).click(function(){
@@ -335,42 +336,12 @@ $('.alphabet').hide();
 									x = x+1;
 								}
 								var index = "#page-" + x;
-								$(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.id+ '</p><p class="hidden">' + item_cat.label_collection_code+ '</p></div>');
+								$(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.label_collection_code+ '</p><p class="hidden">' + item_cat.id+ '</p></div>');
 							});
-							flex2Init();
-							
-							/***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
-							$('#sec-carousel li div').each(function(){
-								$(this).live('click',function(){
-                                                                        console.log('foooo');
-									var tmp1 = $('p',$(this)).html();
-									var tmp2 = $('p:eq(1)',$(this)).html();
-									$("#flex2").animate({'left':'-104%'},200,function(){
-										//destroy divisions and flexsliders
-										//flex2Remove();
-										var url3 = baseurl + albumApi + "?channel_id=" + channel_id + "&album_id=" + tmp1 + "&label_collection_code=" + tmp2; //console.log(url3);
-									        console.log("^^^^^^^^^^^^^  "+url3);
-										$.getJSON("data/sos_list.js",function(data){
-											var details = data.albums_details;
-											$(".album-detail-wrap div img").attr("src", details.image_uri);
-											$("#song-detail1").append(details.title);
-											$("#song-detail2").append(details.primary_artist);
-											$("#song-detail3").append(details.year);
-											//$("#song-details").append(details.primary_copyright_owner);
-											$.each(data['album_tracks'], function(p,item1){
-												var song_id = item1.id;
-												$("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
-											});
-										});
-										$('.album-detail-wrap').animate({right:'0%'},500,function(){
-											 	albumdetflag = 2;
-												 albumlstflag = true;
-										});
-										
-									});
-								});
-							});
+						        flex2Init();
+						        getSongsOfAlbum("sec-carousel");
 						});
+
 											
  $('#sec-div').animate({right:'0%'},500,function(){
 						    albumlstflag = false;
@@ -426,34 +397,9 @@ $('.alphabet').hide();
 				$(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.label_collection_code + '</p><p class="hidden">' + item.id + '</p></div>');
 			});
 			flexInit();
-			
-			/***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
-			$('#other-carousel li div').each(function(){
-				$(this).click(function(){
-					var tmp1 = $('p',$(this)).html();
-					var tmp2 = $('p:eq(1)',$(this)).html();
-					$(flexslider).animate({'left':'-104%'},200,function(){
-					    $('#circularG').show();
-						var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp2 + "&label_collection_code=" + tmp1+"&callback=?"; console.log(url3);
-						$.getJSON(url3,function(data){
-						    $('#circularG').hide();
-							var details = $.parseJSON(data.albums_details);
-							$(".album-detail-wrap div img").attr("src", details.image_uri);
-							$("#song-detail1").append(details.title);
-							$("#song-detail2").append(details.primary_artist);
-							$("#song-detail3").append(details.year);
-							//$("#song-details").append(details.primary_copyright_owner);
-							$.each($.parseJSON(data['album_tracks']), function(p,item1){
-								var song_id = item1.id;
-								$("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
-							});
-						});
-						$('.album-detail-wrap').animate({right:'0%'},500,function(){
-						 	albumdetflag = 3;
-						});
-					});
-				});
-			}); //End of other-carousel	
+                        
+			getSongsOfAlbum("other-carousel");
+				
 		});
 	});
 	
@@ -501,10 +447,23 @@ $('.alphabet').hide();
 								x = x+1;
 							}
 							var index = "#page" + x;
-							$(index).append('<div tabindex="' + j + '" id="' + k + ' "><a><img src="' + item.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.product_uri + '</p></div>');
+						        if(disc_sng) {
+							$(index).append('<div tabindex="' + j + '" id="' + k + ' "><a><img src="' + item.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.product_uri + '</p></div>'); }
+						      else if(disc_art) {
+$(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.name + '</span><span class="span2">' + item.role + '</span><p class="hidden">' + item.id + '</p></div>');
+			
+                                                      }
+						      else if(disc_alb) {
+$(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.label_collection_code + '</p><p class="hidden">' + item.id + '</p></div>');
+						      }	 
 						});
 						
 						flexInit();
+					        if(disc_alb) {
+						    getSongsOfAlbum("carousel");
+                                                }
+					        
+
 					});
 				});
 			});
@@ -618,8 +577,7 @@ $('.alphabet').hide();
 			flexInit();
 			
 			/***------------ GETTING ALBUMS OF THE ARTIST -------------***/
-			
-			$('#other-carousel li div').each(function(){
+       			$('#other-carousel li div').each(function(){
 				$(this).click(function(){
 					var temp = $('p',$(this)).html(); console.log(temp);
 					$(flexslider).animate({'left':'-104%'},200,function(){
@@ -649,6 +607,7 @@ $('.alphabet').hide();
 								var index = "#page-" + x;
 								$(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.id+ '</p><p class="hidden">' + item_cat.label_collection_code+ '</p></div>');
 							});
+
 							flex2Init();
 							
 							/***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
@@ -835,4 +794,42 @@ function createDiscoverOtherTemplate()
 	'<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="thumb" />'+
 	'<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>'+
 	'<div class="span9 song-item" id="song-play"></div></div>');
+}
+
+
+function getSongsOfAlbum(div_id) {
+
+/***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
+			$('#'+div_id+' li div').each(function(){
+				$(this).click(function(){
+					var tmp1 = $('p',$(this)).html();
+					var tmp2 = $('p:eq(1)',$(this)).html();
+					$(flexslider).animate({'left':'-104%'},200,function(){
+					    $('#circularG').show();
+						var url3 = baseurl + albumApi + ".js?channel_id=" + channel_id + "&album_id=" + tmp2 + "&label_collection_code=" + tmp1+"&callback=?"; console.log(url3);
+						$.getJSON(url3,function(data){
+						    $('#circularG').hide();
+							var details = $.parseJSON(data.albums_details);
+							$(".album-detail-wrap div img").attr("src", details.image_uri);
+							$("#song-detail1").append(details.title);
+							$("#song-detail2").append(details.primary_artist);
+							$("#song-detail3").append(details.year);
+							//$("#song-details").append(details.primary_copyright_owner);
+							$.each($.parseJSON(data['album_tracks']), function(p,item1){
+								var song_id = item1.id;
+								$("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
+							});
+						});
+						$('.album-detail-wrap').animate({right:'0%'},500,function(){
+						 	albumdetflag = 3;
+						});
+					});
+				});
+			}); //End of other-carousel
+
+}
+
+
+function getAlbumsOfArtist(div_id) {
+            
 }
