@@ -73,6 +73,9 @@ $('.alphabet').hide();
 				});
 			}
 		}
+		
+		
+		
 	});
 	
 	$('.backplaylist').click(function(){
@@ -403,14 +406,18 @@ $('.alphabet').hide();
 							}
 							var index = "#page" + x;
 						        if(disc_sng) {
+								
 							$(index).append('<div tabindex="' + j + '" id="' + k + ' "><a><img src="' + item.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.product_uri + '</p></div>'); }
 						      else if(disc_art) {
+							 
 $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.name + '</span><span class="span2">' + item.role + '</span><p class="hidden">' + item.id + '</p></div>');
 			
                                                       }
 						      else if(disc_alb) {
+							 
 $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.title + '</span><span class="span2">' + item.primary_artist + '</span><p class="hidden">' + item.label_collection_code + '</p><p class="hidden">' + item.id + '</p></div>');
-						      }	 
+						      }
+ 
 						});
 						
 						flexInit();
@@ -481,6 +488,7 @@ $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" 
 			});
 			
 			flexInit();
+			
 			});
 	});
 		
@@ -637,6 +645,41 @@ function createNewDivision()
 {
 
 	$("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
+	
+	$('.back-btn').click(function(event){
+   
+     		//console.log('backspace clicked');
+			//event.preventDefault();
+			//window.close();
+			if(albumdetflag == 2)
+			{
+				$('.album-detail-wrap').animate({right:'-107%'},500,function(){
+					$('#flex2').animate({left:'0px'},500);
+					albumlstflag = false;
+					albumdetflag = 1;
+					
+				});
+			}
+			else if (albumdetflag == 3)
+			{
+				$('.album-detail-wrap').animate({right:'-107%'},500,function(){
+					$(flexslider).animate({'left':'0px'});
+					albumlstflag = false;
+					albumdetflag = 1;
+					
+				});
+			
+			}
+			else if(albumlstflag == false)
+			{
+				$('#sec-div').animate({right:'-104%'},500,function(){
+					albumlstflag = true;
+					$(flexslider).animate({'left':'0px'});
+					$('.alphabet').show();
+				});
+			}
+		});
+
 }
 
 function createDiscoverSongTemplate()
@@ -693,6 +736,7 @@ function getAlbumsOfArtist(div_id) {
             /***------------ GETTING ALBUMS OF THE ARTIST -------------***/
 			
 			$('#'+div_id+' li div').each(function(){
+			 //console.log(div_id);
 				$(this).click(function(){
 				    
 					var temp = $('p',$(this)).html(); //console.log(temp);

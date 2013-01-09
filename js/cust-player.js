@@ -65,6 +65,7 @@ $(document).ready(function(){
 	var index=0;
 	var items = [];
 	$('#carousel li div').live('click',function(){
+	 console.log('its getting called...');
 		var tmpid = $(this).attr("id");
 		//console.log(tmpid);
 		if($.inArray(tmpid,items) > -1) {
