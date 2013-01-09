@@ -9,7 +9,6 @@ var tagApi = "/songs/get_tag_list";
 var flexslider;
 
 $(document).ready(function(){
-   
 	var myPlaylist = new jPlayerPlaylist({
 	   
 		jPlayer: "#jquery_jplayer_N",
@@ -40,14 +39,16 @@ $(document).ready(function(){
     });
 	
 	//localStorage.clear();
-	//console.log(localStorage);
+	////console.log(localStorage);
 	for(var i = 0; i < localStorage.length; i++) {
-	//console.log(localStorage.key(i));
+	    console.log("foo"); 
+	////console.log(localStorage.key(i));
 		var item = localStorage.getItem(i);
-		var song_url = baseurl + songsApi + "?channel_id=" + channel_id + "&track_id=" + item;
+	        console.log(item);
+		var song_url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&track_id=" + item+"&callback=?";
 		console.log(song_url);
 		$.getJSON(song_url,function(data){
-		var jsonObj = data.songs_by_id;
+		var jsonObj = $.parseJSON(data.songs_by_id);
 			myPlaylist.add({
 				title:   jsonObj.title,
 				artist: jsonObj.primary_artist,
@@ -65,7 +66,7 @@ $(document).ready(function(){
 	var items = [];
 	$('#carousel li div').live('click',function(){
 		var tmpid = $(this).attr("id");
-		console.log(tmpid);
+		//console.log(tmpid);
 		if($.inArray(tmpid,items) > -1) {
 			$('#clkadd').stop(true).html('Song already exist in playlist').css({'background':'#D52224'}).animate({top:'7%'},"500");
 			setTimeout("$('#clkadd').animate({top:'-40%'},'slow')", 1000); //pause for 4 seconds and then fade out
@@ -104,7 +105,7 @@ $(document).ready(function(){
 	
 	$('#song-play div').live('click',function(){
 		var tmpid = $(this).attr("id");
-		console.log(tmpid);
+		//console.log(tmpid);
 		if($.inArray(tmpid,items) > -1) {
 			$('#clkadd').stop(true).html('Song already exist in playlist').css({'background':'#D52224'}).animate({top:'7%'},"500");
 			setTimeout("$('#clkadd').animate({top:'-40%'},'slow')", 1000); //pause for 4 seconds and then fade out
@@ -168,12 +169,11 @@ $(document).ready(function(){
 	
 	
 	$('.jp-playlist ul li .jp-playlist-item-remove').live('click',function(){
-		
 		var item_rmv = $(this).parents('li').attr('id');
-		//console.log("item of play list"+$(this).parents('li').attr('id'));
+		////console.log("item of play list"+$(this).parents('li').attr('id'));
 		items.splice($.inArray($(this).parents('li').attr('id'), items),1);
 		var c = items.length;
-		//console.log(c);
+		////console.log(c);
 		for(var i = 0; i < localStorage.length; i++) 
 		{
 			if(i < c)
