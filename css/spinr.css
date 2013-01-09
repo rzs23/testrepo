@@ -171,7 +171,7 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 
 
 
-#circularG{position:absolute; width:128px; height:128px; margin-left: 37%; margin-top: 15%;z-index: 9999;}
+#circularG{position:relative; width:128px; height:128px; margin-left: 37%; margin-top: 15%;z-index: 9999;}
 
 .circularG{
 position:absolute;
