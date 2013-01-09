@@ -120,7 +120,7 @@ $(document).ready(function(){
 				title:   $('span',$(this)).html(),
 				artist: $('span:eq(1)',$(this)).html(),
 				free:  true,
-				thumb: $('img',$(this)).attr('src'),  /* custom prop*/
+				thumb: $('.albm-desc img').attr('src'),  /* custom prop*/
 				id : $(this).attr('id'),/* custom prop*/
 				mp3:song,
 				oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
