@@ -453,7 +453,7 @@ $('.alphabet').hide();
 						});
 					});
 				});
-			});	
+			}); //End of other-carousel	
 		});
 	});
 	
@@ -465,20 +465,25 @@ $('.alphabet').hide();
 				$(this).click(function(){
 					flexRemove();
 					var url;
-					if( disc_sng == false)
+					if( disc_sng == true)
 					{
-						url = baseurl + songsApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; //console.log(url);
+						url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&songs_limit=20&start_alpha=" + tempp+"&callback=?"; //console.log(url);
+					        key = "songs_list_by_alphabet";
 					}
-					else if (disc_alb == false)
+					else if (disc_alb == true)
 					{
-						url = baseurl + albumApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; //console.log(url);
+						url = baseurl + albumApi + ".js?channel_id=" + channel_id + "&songs_limit=20&start_alpha=" + tempp+"&callback=?"; //console.log(url);
+					        key = "albums";
 					}
-					else if (disc_art == false)
+					else if (disc_art == true)
 					{
-						url = baseurl + artistApi + "?channel_id=" + channel_id + "&songs_limit=50&start_alpha=" + tempp; //console.log(url);
+						url = baseurl + artistApi + ".js?channel_id=" + channel_id + "&songs_limit=20&start_alpha=" + tempp+"&callback=?"; //console.log(url);
+					        key = "artists";
 					}
-					$.getJSON("data/A.js",function(data){
-						var jsonObj = data['songs_list_by_alphabet'];
+				        console.log(url)
+					$.getJSON(url,function(data){
+						var jsonObj = $.parseJSON(data[key]);
+					        console.log(data);
 						var len = jsonObj.length;
 						var p = (len/6) + 1;
 						var pages = Math.floor(p);
