@@ -174,7 +174,7 @@ $(document).ready(function(){
 		////console.log("item of play list"+$(this).parents('li').attr('id'));
 		items.splice($.inArray($(this).parents('li').attr('id'), items),1);
 		var c = items.length;
-		////console.log(c);
+	   console.log(c);
 		for(var i = 0; i < localStorage.length; i++) 
 		{
 			if(i < c)

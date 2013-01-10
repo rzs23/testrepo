@@ -4,7 +4,7 @@ body{ padding-top: 1px; overflow-x: hidden; }
 #clkadd{ width: 71%; height: 27px; position: fixed; top: -40%; left: 313px; padding: 9px 6px; color: #fff; background: #D52224; opacity:0.9;
 font-size: 23px; text-align: center; text-shadow: 5px 7px 10px #000000;  }
 
-#app-settings  {  width: 73%; height: 495px; left: 21%; position: absolute; top: -85%; background: none repeat scroll 0 0 #EADEDE;}
+#app-settings  { display: none; width: 73%; height: 495px; left: 21%; position: absolute; top: -85%; background: none repeat scroll 0 0 #EADEDE;}
 .hidden { display:none;}
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{ width: 1216px; height: 684px;}
 .container .row{ margin-bottom :7px; }

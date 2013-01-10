@@ -391,11 +391,13 @@ $('.alphabet').hide();
 						var len = jsonObj.length;
 						var p = (len/6) + 1;
 						var pages = Math.floor(p);
-						createDiscoverSongTemplate();
-						for (var c = 1; c <=pages; c++)
+						createDiscoverSongTemplate(pages);
+						//createDiscoverSongTemplatealphabetwise();
+					/*	for (var c = 1; c <=pages; c++)
 						{
 							$("#carousel").append('<li id="page' + c + '"></li>');
-						}
+						} 
+						*/
 						$.each(jsonObj, function(i,item){
 							var j = i + 1;
 							var k=item.id;
@@ -425,7 +427,8 @@ $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" 
 						    getSongsOfAlbum("carousel");
                                                 }
 					        else if (disc_art) {
-						    getAlbumsOfArtist("carousel");
+						    getAlbumsOfArtist("other-carousel");
+							//getAlbumsOfArtistalphabetwise("other-carousel")
 						}    
 					        
 
@@ -682,10 +685,39 @@ function createNewDivision()
 
 }
 
-function createDiscoverSongTemplate()
+function createDiscoverSongTemplate(no_of_pages)
 {	
  	$('.alphabet').show();
-	$('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>').appendTo('#main-div');
+	
+	var color = $('#accordion2 .accordion-group:eq(1) .accordion-body li#discover-artists-accordion a').css('color');
+	console.log(color);
+	if(color == 'rgb(255, 0, 0)'){
+		 var id = 'other-carousel';  
+	 
+			$("<div class='flexslider'><ul class='slides' id="+id+"></ul></div>").appendTo('#main-div');
+				//$("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
+				for (var c = 1; c <=no_of_pages; c++)
+						{
+							$("#other-carousel").append('<li id="page' + c + '"></li>');
+						}
+	 
+	 }
+	 else{
+	 var id1 = 'carousel';
+	$('<div class="flexslider"><ul class="slides id="'+id1+'></ul></div>').appendTo('#main-div');
+	//$("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
+	for (var c = 1; c <=no_of_pages; c++)
+						{
+							$("#carousel").append('<li id="page' + c + '"></li>');
+						}
+	}					
+}
+
+
+function createDiscoverSongTemplatealphabetwise()
+{	
+ 	$('.alphabet').show();
+	$('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div>').appendTo('#main-div');
 	//$("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
 }
 
@@ -782,3 +814,5 @@ function getAlbumsOfArtist(div_id) {
 			});
 
 }
+
+
