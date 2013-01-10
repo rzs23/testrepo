@@ -475,7 +475,7 @@ $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" 
 			var len = jsonObj.length;
 			var p = (len/6) + 1;
 			var pages = Math.floor(p);
-			createDiscoverSongTemplate();
+			createDiscoverSongTemplate(pages);
 			for (var c = 1; c <=pages; c++)
 			{
 				$("#carousel").append('<li id="page' + c + '"></li>');
@@ -693,26 +693,19 @@ function createDiscoverSongTemplate(no_of_pages)
 	
 	var color = $('#accordion2 .accordion-group:eq(1) .accordion-body li#discover-artists-accordion a').css('color');
 	console.log(color);
-	if(color == 'rgb(255, 0, 0)'){
+	if(color == 'rgb(255, 0, 0)')
 		 var id = 'other-carousel';  
+        else
+	         var id = 'carousel';
 	 
-			$("<div class='flexslider'><ul class='slides' id="+id+"></ul></div>").appendTo('#main-div');
-				//$("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
-				for (var c = 1; c <=no_of_pages; c++)
-						{
-							$("#other-carousel").append('<li id="page' + c + '"></li>');
-						}
-	 
-	 }
-	 else{
-	 var id1 = 'carousel';
-	$('<div class="flexslider"><ul class="slides id="'+id1+'></ul></div>').appendTo('#main-div');
-	//$("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
+        $("<div class='flexslider'><ul class='slides' id="+id+"></ul></div>").appendTo('#main-div');
+
 	for (var c = 1; c <=no_of_pages; c++)
-						{
-							$("#carousel").append('<li id="page' + c + '"></li>');
-						}
-	}					
+	{
+	  $("#"+id).append('<li id="page' + c + '"></li>');
+	}
+	 
+	 				
 }
 
 
