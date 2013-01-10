@@ -394,12 +394,6 @@ $('.alphabet').hide();
 						var p = (len/6) + 1;
 						var pages = Math.floor(p);
 						createDiscoverSongTemplate(pages);
-						//createDiscoverSongTemplatealphabetwise();
-					/*	for (var c = 1; c <=pages; c++)
-						{
-							$("#carousel").append('<li id="page' + c + '"></li>');
-						} 
-						*/
 						$.each(jsonObj, function(i,item){
 							var j = i + 1;
 							var k=item.id;
@@ -703,14 +697,6 @@ function createDiscoverSongTemplate(no_of_pages)
 	}
 	 
 	 				
-}
-
-
-function createDiscoverSongTemplatealphabetwise()
-{	
- 	$('.alphabet').show();
-	$('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div>').appendTo('#main-div');
-	//$("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
 }
 
 function createDiscoverOtherTemplate()
