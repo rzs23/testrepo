@@ -180,10 +180,12 @@ $('.alphabet').hide();
 				        flexRemove();
 						$(".album-detail-wrap").remove();
 						
-						var genre = $(this).text();
-						var url = baseurl + allGenreApi + "?channel_id=" + channel_id + "&genre=" + genre; //console.log(url); 
-						$.getJSON("data/top-cat-1.js",function(data){
-								var temp = data.songs_by_category[0];
+						var genre = escape($(this).text());
+						var url = baseurl + allGenreApi + ".js?channel_id=" + channel_id + "&genre=" + genre + "&callback=?"; //console.log(url); 
+     	                		        $("#circularG").show();
+						$.getJSON(url,function(data){
+                     	                		        $("#circularG").hide();
+								var temp = $.parseJSON(data.songs_by_category)[0];
 								var obj = temp.genre;
 								var len = obj.length;
 								var p = (len/6) + 1;
