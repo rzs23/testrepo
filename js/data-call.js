@@ -387,7 +387,9 @@ $('.alphabet').hide();
 					        key = "artists";
 					}
 				        console.log(url)
+					$('#circularG').show();
 					$.getJSON(url,function(data){
+    						$('#circularG').hide();
 						var jsonObj = $.parseJSON(data[key]);
 					        console.log(data);
 						var len = jsonObj.length;
