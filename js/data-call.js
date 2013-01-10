@@ -692,12 +692,9 @@ function createDiscoverSongTemplate(no_of_pages)
  	$('.alphabet').show();
 	
 	var color = $('#accordion2 .accordion-group:eq(1) .accordion-body li#discover-artists-accordion a').css('color');
-	console.log(color);
-	if(color == 'rgb(255, 0, 0)')
-		 var id = 'other-carousel';  
-        else
-	         var id = 'carousel';
-	 
+
+	var id = (color == 'rgb(255, 0, 0)')?'other-carousel':'carousel';
+
         $("<div class='flexslider'><ul class='slides' id="+id+"></ul></div>").appendTo('#main-div');
 
 	for (var c = 1; c <=no_of_pages; c++)
