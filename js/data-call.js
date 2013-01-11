@@ -542,6 +542,7 @@ $(document).ready(function() {
         //destroy divisions and flexsliders
         flexRemove();
         $(".album-detail-wrap").remove();
+		$('#sec-div').css({'right':'-104%'});
         $("#circularG").show();
         var url = baseurl + artistApi + ".js?channel_id=" + channel_id + "&songs_limit=20&callback=?"; //console.log(url);
         $.getJSON(url, function(data) {
@@ -721,7 +722,7 @@ function createNewDivision() {
 
 function createDiscoverSongTemplate(no_of_pages) {
     $('.alphabet').show();
-
+    $('#sec-div').css({'right':'-104%'});
     var color = $('#accordion2 .accordion-group:eq(1) .accordion-body li#discover-artists-accordion a').css('color');
 
     var id = (color == 'rgb(255, 0, 0)') ? 'other-carousel' : 'carousel';
