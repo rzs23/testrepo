@@ -9,7 +9,7 @@ var genreApi = "/songs/get_genre_list";
 var allGenreApi = "/songs/get_genre_home";
 var tagApi = "/songs/get_tag_list";
 var flexslider;
-var tmpflag=true; var albumdetflag = 1; var albumlstflag = true; var settflag = true;
+var playlist_hidden=true; var albumdetflag = 1; var albumlstflag = true; var settflag = true;
 var disc_sng =true; var disc_alb =true; var disc_art =true;
 $(document).ready(function(){
 $('.alphabet').hide();
@@ -80,7 +80,7 @@ $('.alphabet').hide();
 	
 	$('.backplaylist').click(function(){
 		$('.jp-playlist').animate({left:'100%'},'slow',function(){
-		tmpflag = true;
+		playlist_hidden = true;
 		$('.jp-playlist').hide();
 	   });	
 	});
@@ -89,7 +89,7 @@ $('.alphabet').hide();
 	/***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
 	$('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function(){
 
-                //console.log("tmpflag="+tmpflag+"settflag="+settflag);
+                //console.log("playlist_hidden="+playlist_hidden+"settflag="+settflag);
 
                 if (! $(".jp-playlist").is(":hidden")) {
 		    $(".backplaylist").click();
@@ -111,14 +111,14 @@ $('.alphabet').hide();
 		else{ $('.jp-playlist p').remove();}
 		
 		$('.jp-playlist').show().animate({left:'21%'},'slow',function(){
-		     tmpflag = false;
+		     playlist_hidden = false;
 		});
 
 	});
 	
 	/** ----------------------------DISPLAY SETTINGS------------------------------------------------------****/
 	$('#accordion2 .accordion-group:eq(4)').click(function(){
-            //console.log("tmpflag="+tmpflag+"settflag="+settflag);
+            //console.log("playlist_hidden="+playlist_hidden+"settflag="+settflag);
 
 	    if(parseInt($("#app-settings").css("top"),10) > 0) {
 
@@ -128,9 +128,9 @@ $('.alphabet').hide();
 		 });
 		return;
             }
-	    if(tmpflag==false){
+	    if(playlist_hidden==false){
 			$('.jp-playlist').animate({left:'100%'},'slow',function(){
-			    tmpflag = true;
+			    playlist_hidden = true;
 				$('.jp-playlist').hide();
 			});	
 		}
@@ -163,9 +163,9 @@ $('.alphabet').hide();
 				   $(this).click(function(){
 				        
 								/** Hide playlist on Discover > items accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
@@ -218,9 +218,9 @@ $('.alphabet').hide();
 	
 	$('#top-songs-accordion').click(function(){	
 	    /** Hide playlist on Top songs accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
@@ -267,9 +267,9 @@ $('.alphabet').hide();
 	
 	$('#top-artists-accordion').click(function artistsClick(){
 		  /** Hide playlist on Top ten > Artists accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
@@ -315,9 +315,9 @@ $('.alphabet').hide();
 /***----------------------------------------- TOP ALBUMS API CALL -----------------------------------------------------****/	
 	$('#top-albums-accordion').click(function(){
 	    /** Hide playlist on Top ten > albums accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
@@ -449,9 +449,9 @@ $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" 
 		disc_art = false;
 		disc_alb = false;
 	    /** Hide playlist on Top songs accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
@@ -503,9 +503,9 @@ $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" 
 		disc_art = true;
 		disc_alb = false;
 		  /** Hide playlist on Top ten > Artists accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
@@ -554,9 +554,9 @@ $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" 
 		disc_art = false;
 		disc_alb = true;
 	    /** Hide playlist on Top ten > albums accordian click *****/
-								 if(tmpflag==false){
+								 if(playlist_hidden==false){
 									  $('.jp-playlist').animate({left:'100%'},'slow',function(){
-										tmpflag = true;
+										playlist_hidden = true;
 										$('.jp-playlist').hide();
 									   });	
 								  }
