@@ -10,7 +10,7 @@ var allGenreApi = "/songs/get_genre_home";
 var tagApi = "/songs/get_tag_list";
 var flexslider;
 var playlist_hidden = true;
-var showing_album_contents = 1;
+var showing_album_contents = 0;
 var albumlstflag = true;
 var settings_hidden = true;
 var disc_sng = true;
@@ -51,18 +51,7 @@ $(document).ready(function() {
 
     $(document).keydown(function(event) {
         if (event.keyCode == VK_BACK_SPACE || event.keyCode == 27) {
-            if (showing_album_contents == 2) {
-                $('.album-detail-wrap').animate({
-                    right: '-107%'
-                }, 500, function() {
-                    $('#flex2').animate({
-                        left: '0px'
-                    }, 500);
-                    albumlstflag = false;
-                    showing_album_contents = 1;
-
-                });
-            } else if (showing_album_contents == 3) {
+            if (showing_album_contents == 1) {
                 $('.album-detail-wrap').animate({
                     right: '-107%'
                 }, 500, function() {
@@ -70,7 +59,7 @@ $(document).ready(function() {
                         'left': '0px'
                     });
                     albumlstflag = false;
-                    showing_album_contents = 1;
+                    showing_album_contents = 0;
 
                 });
 
@@ -677,22 +666,7 @@ function createNewDivision() {
     $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
 
     $('.back-btn').click(function(event) {
-        
-        //console.log('backspace clicked');
-        //event.preventDefault();
-        //window.close();
-        if (showing_album_contents == 2) {
-            $('.album-detail-wrap').animate({
-                right: '-107%'
-            }, 500, function() {
-                $('#flex2').animate({
-                    left: '0px'
-                }, 500);
-                albumlstflag = false;
-                showing_album_contents = 1;
-
-            });
-        } else if (showing_album_contents == 3) {
+        if (showing_album_contents == 1) {
             $('.album-detail-wrap').animate({
                 right: '-107%'
             }, 500, function() {
@@ -700,7 +674,7 @@ function createNewDivision() {
                     'left': '0px'
                 });
                 albumlstflag = false;
-                showing_album_contents = 1;
+                showing_album_contents = 0;
 
             });
 
@@ -774,7 +748,7 @@ function getSongsOfAlbum(div_id) {
                 $('.album-detail-wrap').animate({
                     right: '0%'
                 }, 500, function() {
-                    showing_album_contents = 3;
+                    showing_album_contents = 1;
                 });
             });
         });
