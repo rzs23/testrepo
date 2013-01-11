@@ -44,7 +44,6 @@ $(document).ready(function() {
         });
     });
 
-
     if ($('.flexslider').length) {
         flexslider = $('.flexslider');
     } else {
@@ -53,9 +52,6 @@ $(document).ready(function() {
 
     $(document).keydown(function(event) {
         if (event.keyCode == VK_BACK_SPACE || event.keyCode == 27) {
-            //console.log('backspace clicked');
-            //event.preventDefault();
-            //window.close();
             if (albumdetflag == 2) {
                 $('.album-detail-wrap').animate({
                     right: '-107%'
@@ -248,14 +244,14 @@ $(document).ready(function() {
 
     $('#top-songs-accordion').click(function() {
         /** Hide playlist on Top songs accordian click *****/
-        if (playlist_hidden == false) {
+        if (! playlist_hidden) {
             $('.jp-playlist').animate({
                 left: '100%'
             }, 'slow', function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settings_hidden == false) {
+        } else if (! settings_hidden) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
