@@ -711,7 +711,7 @@ function createDiscoverSongTemplate(no_of_pages) {
 
 function createDiscoverOtherTemplate() {
     $('.alphabet').show();
-
+    $('#sec-div').css({'right':'-104%'});
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="thumb" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
