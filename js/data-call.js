@@ -11,7 +11,7 @@ var tagApi = "/songs/get_tag_list";
 var flexslider;
 var playlist_hidden = true;
 var showing_album_contents = 0;
-var albumlstflag = true;
+var showing_albums = true;
 var settings_hidden = true;
 var disc_sng = true;
 var disc_alb = true;
@@ -58,16 +58,16 @@ $(document).ready(function() {
                     $(flexslider).animate({
                         'left': '0px'
                     });
-                    albumlstflag = false;
+                    showing_albums = false;
                     showing_album_contents = 0;
 
                 });
 
-            } else if (albumlstflag == false) {
+            } else if (showing_albums == false) {
                 $('#sec-div').animate({
                     right: '-104%'
                 }, 500, function() {
-                    albumlstflag = true;
+                    showing_albums = true;
                     $(flexslider).animate({
                         'left': '0px'
                     });
@@ -673,16 +673,16 @@ function createNewDivision() {
                 $(flexslider).animate({
                     'left': '0px'
                 });
-                albumlstflag = false;
+                showing_albums = false;
                 showing_album_contents = 0;
 
             });
 
-        } else if (albumlstflag == false) {
+        } else if (showing_albums == false) {
             $('#sec-div').animate({
                 right: '-104%'
             }, 500, function() {
-                albumlstflag = true;
+                showing_albums = true;
                 $(flexslider).animate({
                     'left': '0px'
                 });
@@ -801,7 +801,7 @@ function getAlbumsOfArtist(div_id) {
                 $('#sec-div').animate({
                     right: '0%'
                 }, 500, function() {
-                    albumlstflag = false;
+                    showing_albums = false;
 
                 });
             });
