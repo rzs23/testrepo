@@ -12,7 +12,7 @@ var flexslider;
 var playlist_hidden = true;
 var albumdetflag = 1;
 var albumlstflag = true;
-var settflag = true;
+var settings_hidden = true;
 var disc_sng = true;
 var disc_alb = true;
 var disc_art = true;
@@ -109,18 +109,18 @@ $(document).ready(function() {
     /***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
     $('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function() {
 
-        //console.log("playlist_hidden="+playlist_hidden+"settflag="+settflag);
+        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
 
         if (!$(".jp-playlist").is(":hidden")) {
             $(".backplaylist").click();
             return;
         }
 
-        if (settflag == false) {
+        if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
 
             });
         }
@@ -142,14 +142,14 @@ $(document).ready(function() {
 
     /** ----------------------------DISPLAY SETTINGS------------------------------------------------------****/
     $('#accordion2 .accordion-group:eq(4)').click(function() {
-        //console.log("playlist_hidden="+playlist_hidden+"settflag="+settflag);
+        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
 
         if (parseInt($("#app-settings").css("top"), 10) > 0) {
 
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
 
             });
             return;
@@ -166,7 +166,7 @@ $(document).ready(function() {
         $('#app-settings').animate({
             top: '8%'
         }, 'slow', function() {
-            settflag = false;
+            settings_hidden = false;
         });
     });
 
@@ -200,11 +200,11 @@ $(document).ready(function() {
                         playlist_hidden = true;
                         $('.jp-playlist').hide();
                     });
-                } else if (settflag == false) {
+                } else if (settings_hidden == false) {
                     $('#app-settings').animate({
                         top: '-85%'
                     }, 'slow', function() {
-                        settflag = true;
+                        settings_hidden = true;
                     });
                 }
 
@@ -255,11 +255,11 @@ $(document).ready(function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settflag == false) {
+        } else if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
             });
         }
         //destroy divisions and flexsliders
@@ -305,11 +305,11 @@ $(document).ready(function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settflag == false) {
+        } else if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
             });
         }
         //destroy divisions and flexsliders
@@ -354,11 +354,11 @@ $(document).ready(function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settflag == false) {
+        } else if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
             });
         }
         //destroy divisions and flexsliders
@@ -481,11 +481,11 @@ $(document).ready(function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settflag == false) {
+        } else if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
             });
         }
         //destroy divisions and flexsliders
@@ -536,11 +536,11 @@ $(document).ready(function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settflag == false) {
+        } else if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
             });
         }
         //destroy divisions and flexsliders
@@ -588,11 +588,11 @@ $(document).ready(function() {
                 playlist_hidden = true;
                 $('.jp-playlist').hide();
             });
-        } else if (settflag == false) {
+        } else if (settings_hidden == false) {
             $('#app-settings').animate({
                 top: '-85%'
             }, 'slow', function() {
-                settflag = true;
+                settings_hidden = true;
             });
         }
         //destroy divisions and flexsliders
