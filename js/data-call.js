@@ -514,6 +514,7 @@ $(document).ready(function() {
         disc_art = true;
         disc_alb = false;
         showing_albums = false
+        $('.alphabet').show();
         /** Hide playlist on Top ten > Artists accordian click *****/
         if (playlist_hidden == false) {
             $('.jp-playlist').animate({
@@ -567,6 +568,7 @@ $(document).ready(function() {
         disc_sng = false;
         disc_art = false;
         disc_alb = true;
+        $('.alphabet').show();
         /** Hide playlist on Top ten > albums accordian click *****/
         if (playlist_hidden == false) {
             $('.jp-playlist').animate({
@@ -665,8 +667,9 @@ function createOtherTemplate() {
 
 
 function createNewDivision() {
-    $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
 
+    $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
+   alert('called');
     $('.back-btn').click(function(event) {
         if (showing_album_contents == 1) {
             $('.album-detail-wrap').animate({
@@ -731,16 +734,20 @@ function createDiscoverOtherTemplate() {
                 showing_album_contents = 0;
 
             });
+           $('.alphabet').show();
 
         } else /*if (showing_albums == false)*/ {
+            alert('baz');
+            $('.alphabet').show();
             $('#sec-div').animate({
                 right: '-104%'
             }, 500, function() {
+                alert('foo');
                 showing_albums = true;
                 $(flexslider).animate({
                     'left': '0px'
                 });
-                $('.alphabet').show();
+                
             });
         }
     });
@@ -752,7 +759,9 @@ function getSongsOfAlbum(div_id) {
 
     /***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
     $('#' + div_id + ' li div').each(function() {
+
         $(this).click(function() {
+            $('.alphabet').hide();
 	    showing_albums = false;
             var tmp1 = $('p', $(this)).html();
             var tmp2 = $('p:eq(1)', $(this)).html();
@@ -795,6 +804,7 @@ function getAlbumsOfArtist(div_id) {
     $('#' + div_id + ' li div').each(function() {
         //console.log(div_id);
         $(this).click(function() {
+            $('.alphabet').hide();
 	    showing_albums = true;
             var temp = $('p', $(this)).html(); //console.log(temp);
             $(flexslider).animate({
