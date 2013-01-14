@@ -19,6 +19,7 @@ var disc_art = true;
 $(document).ready(function() {
     $('.alphabet').hide();
 
+    
     /*** TOGGLE ACCORDIAN COLOR ON SELECTED STATE *******/
     $('.accordion-body ul li a').each(function() {
         $(this).click(function() {
@@ -662,9 +663,8 @@ function createOtherTemplate() {
         '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div></div>');
 }
 
-function createNewDivision() {
-    console.log("called");
 
+function createNewDivision() {
     $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
 
     $('.back-btn').click(function(event) {
@@ -680,7 +680,7 @@ function createNewDivision() {
 
             });
 
-        } else if (showing_albums == false) {
+        } else /*if (showing_albums == false)*/ {
             $('#sec-div').animate({
                 right: '-104%'
             }, 500, function() {
@@ -718,6 +718,33 @@ function createDiscoverOtherTemplate() {
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="thumb" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
         '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div> </div>');
+
+    $('.back-btn').click(function(event) {
+        if (showing_album_contents == 1) {
+            $('.album-detail-wrap').animate({
+                right: '-107%'
+            }, 500, function() {
+                $(flexslider).animate({
+                    'left': '0px'
+                });
+                showing_albums = false;
+                showing_album_contents = 0;
+
+            });
+
+        } else /*if (showing_albums == false)*/ {
+            $('#sec-div').animate({
+                right: '-104%'
+            }, 500, function() {
+                showing_albums = true;
+                $(flexslider).animate({
+                    'left': '0px'
+                });
+                $('.alphabet').show();
+            });
+        }
+    });
+
 }
 
 
