@@ -512,6 +512,7 @@ $(document).ready(function() {
         disc_sng = false;
         disc_art = true;
         disc_alb = false;
+        showing_albums = false
         /** Hide playlist on Top ten > Artists accordian click *****/
         if (playlist_hidden == false) {
             $('.jp-playlist').animate({
@@ -591,7 +592,7 @@ $(document).ready(function() {
             $("#circularG").hide();
             var jsonObj = $.parseJSON(data['albums_list']);
             var len = jsonObj.length;
-            var p = (len / 6) + 1;
+            var p = (len / 6) + 1; 
             var pages = Math.floor(p);
             createDiscoverOtherTemplate();
 
@@ -658,10 +659,11 @@ function createOtherTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span9 song-item" id="song-play"></div></div>');
+        '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div></div>');
 }
 
 function createNewDivision() {
+    console.log("called");
 
     $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
 
@@ -715,7 +717,7 @@ function createDiscoverOtherTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="thumb" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span9 song-item" id="song-play"></div></div>');
+        '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div> </div>');
 }
 
 
@@ -724,6 +726,7 @@ function getSongsOfAlbum(div_id) {
     /***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
     $('#' + div_id + ' li div').each(function() {
         $(this).click(function() {
+	    showing_albums = false;
             var tmp1 = $('p', $(this)).html();
             var tmp2 = $('p:eq(1)', $(this)).html();
             $(flexslider).animate({
@@ -743,8 +746,10 @@ function getSongsOfAlbum(div_id) {
                     $.each($.parseJSON(data['album_tracks']), function(p, item1) {
                         var song_id = item1.id;
                         $("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
-                    });
+                     });
+
                 });
+
                 $('.album-detail-wrap').animate({
                     right: '0%'
                 }, 500, function() {
@@ -763,7 +768,7 @@ function getAlbumsOfArtist(div_id) {
     $('#' + div_id + ' li div').each(function() {
         //console.log(div_id);
         $(this).click(function() {
-
+	    showing_albums = true;
             var temp = $('p', $(this)).html(); //console.log(temp);
             $(flexslider).animate({
                 'left': '-104%'
@@ -801,7 +806,7 @@ function getAlbumsOfArtist(div_id) {
                 $('#sec-div').animate({
                     right: '0%'
                 }, 500, function() {
-                    showing_albums = false;
+                    //showing_albums = false;
 
                 });
             });
