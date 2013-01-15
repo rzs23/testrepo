@@ -325,7 +325,7 @@ $(document).ready(function() {
                 $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.name + '</span><span class="span2">' + item.role + '</span><p class="hidden">' + item.id + '</p></div>');
             });
             flexInit();
-            getAlbumsOfArtist("other-carousel");
+            getAlbumsOfArtistOnClick("other-carousel");
         });
     });
 
@@ -375,7 +375,7 @@ $(document).ready(function() {
             });
             flexInit();
 
-            getSongsOfAlbum("other-carousel");
+            getSongsOfAlbumOnClick("other-carousel");
 
 
         });
@@ -433,10 +433,10 @@ $(document).ready(function() {
 
                 flexInit();
                 if (disc_alb) {
-                    getSongsOfAlbum("carousel");
+                    getSongsOfAlbumOnClick("carousel");
                 } else if (disc_art) {
-                    getAlbumsOfArtist("other-carousel");
-                    //getAlbumsOfArtistalphabetwise("other-carousel")
+                    getAlbumsOfArtistOnClick("other-carousel");
+                    //getAlbumsOfArtistOnClickalphabetwise("other-carousel")
                 }
 
 
@@ -557,7 +557,7 @@ $(document).ready(function() {
                 $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.name + '</span><span class="span2">' + item.role + '</span><p class="hidden">' + item.id + '</p></div>');
             });
             flexInit();
-            getAlbumsOfArtist("other-carousel");
+            getAlbumsOfArtistOnClick("other-carousel");
 
         });
     });
@@ -614,7 +614,7 @@ $(document).ready(function() {
             });
             flexInit();
 
-            getSongsOfAlbum("other-carousel");
+            getSongsOfAlbumOnClick("other-carousel");
         });
     });
 
@@ -665,36 +665,43 @@ function createOtherTemplate() {
         '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div></div>');
 }
 
+function initializeBackButton() {
+    $('.back-btn').click(function(event){
+	console.log("showing albums "+showing_albums+" showing album contents"+showing_album_contents);
+    });
+}
+
 
 function createNewDivision() {
-
+     
     $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
-   alert('called');
-    $('.back-btn').click(function(event) {
-        if (showing_album_contents == 1) {
-            $('.album-detail-wrap').animate({
-                right: '-107%'
-            }, 500, function() {
-                $(flexslider).animate({
-                    'left': '0px'
-                });
-                showing_albums = false;
-                showing_album_contents = 0;
 
-            });
+    // $('.back-btn').click(function(event) {
+    //     alert('Back button clicked');
+    //     if (showing_album_contents == 1) {
+    //         $('.album-detail-wrap').animate({
+    //             right: '-107%'
+    //         }, 500, function() {
+    //             $(flexslider).animate({
+    //                 'left': '0px'
+    //             });
+    //             showing_albums = true;
+    //             showing_album_contents = 0;
 
-        } else /*if (showing_albums == false)*/ {
-            $('#sec-div').animate({
-                right: '-104%'
-            }, 500, function() {
-                showing_albums = true;
-                $(flexslider).animate({
-                    'left': '0px'
-                });
-                $('.alphabet').show();
-            });
-        }
-    });
+    //         });
+
+    //     } else /*if (showing_albums == false)*/ {
+    //         $('#sec-div').animate({
+    //             right: '-104%'
+    //         }, 500, function() {
+    //             showing_albums = true;
+    //             $(flexslider).animate({
+    //                 'left': '0px'
+    //             });
+    //             $('.alphabet').show();
+    //         });
+    //     }
+    // });
 
 }
 
@@ -722,41 +729,43 @@ function createDiscoverOtherTemplate() {
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
         '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div> </div>');
 
-    $('.back-btn').click(function(event) {
-        if (showing_album_contents == 1) {
-            $('.album-detail-wrap').animate({
-                right: '-107%'
-            }, 500, function() {
-                $(flexslider).animate({
-                    'left': '0px'
-                });
-                showing_albums = false;
-                showing_album_contents = 0;
+    //One more click on back button event handler exists
 
-            });
-           $('.alphabet').show();
+    // $('.back-btn').click(function(event) {
+    //     if (showing_album_contents == 1) {
+    //         $('.album-detail-wrap').animate({
+    //             right: '-107%'
+    //         }, 500, function() {
+    //             $(flexslider).animate({
+    //                 'left': '0px'
+    //             });
+    //             showing_albums = false;
+    //             showing_album_contents = 0;
 
-        } else /*if (showing_albums == false)*/ {
-            alert('baz');
-            $('.alphabet').show();
-            $('#sec-div').animate({
-                right: '-104%'
-            }, 500, function() {
-                alert('foo');
-                showing_albums = true;
-                $(flexslider).animate({
-                    'left': '0px'
-                });
+    //         });
+    //        $('.alphabet').show();
+
+    //     } else /*if (showing_albums == false)*/ {
+    //         alert('baz');
+    //         $('.alphabet').show();
+    //         $('#sec-div').animate({
+    //             right: '-104%'
+    //         }, 500, function() {
+    //             alert('foo');
+    //             showing_albums = true;
+    //             $(flexslider).animate({
+    //                 'left': '0px'
+    //             });
                 
-            });
-        }
-    });
+    //         });
+    //     }
+    // });
 
 }
 
 
-function getSongsOfAlbum(div_id) {
-
+function getSongsOfAlbumOnClick(div_id) {
+    alert('called');
     /***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
     $('#' + div_id + ' li div').each(function() {
 
@@ -791,14 +800,16 @@ function getSongsOfAlbum(div_id) {
                 }, 500, function() {
                     showing_album_contents = 1;
                 });
+
             });
+            initializeBackButton();
         });
     }); //End of other-carousel
 
 }
 
 
-function getAlbumsOfArtist(div_id) {
+function getAlbumsOfArtistOnClick(div_id) {
     /***------------ GETTING ALBUMS OF THE ARTIST -------------***/
 
     $('#' + div_id + ' li div').each(function() {
@@ -836,7 +847,8 @@ function getAlbumsOfArtist(div_id) {
                         $(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.label_collection_code + '</p><p class="hidden">' + item_cat.id + '</p></div>');
                     });
                     flex2Init();
-                    getSongsOfAlbum("sec-carousel");
+		    //initializeBackButton();
+                    getSongsOfAlbumOnClick("sec-carousel");
                 });
 
 
