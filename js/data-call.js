@@ -10,158 +10,15 @@ var allGenreApi = "/songs/get_genre_home";
 var tagApi = "/songs/get_tag_list";
 var flexslider;
 var playlist_hidden = true;
-var showing_album_contents = 0;
-var showing_albums = true;
+var showing_album_contents = false;
+var showing_albums = false;
 var settings_hidden = true;
 var disc_sng = true;
 var disc_alb = true;
 var disc_art = true;
 $(document).ready(function() {
     $('.alphabet').hide();
-
-    
-    /*** TOGGLE ACCORDIAN COLOR ON SELECTED STATE *******/
-    $('.accordion-body ul li a').each(function() {
-        $(this).click(function() {
-            $('.accordion-body ul li a').css({
-                'color': '#fff'
-            });
-            $(this).css({
-                'color': 'red'
-            });
-        })
-    });
-
-    $('.collapse').live('show', function() {
-        //$(this).parent().find('a').addClass('open'); //add active state to button on open
-        $(this).parent().find('.accordion-heading').children('a').addClass('open'); //add active state to button on open
-    });
-
-    $('.collapse').live('hide', function() {
-        $(this).parent().find('.accordion-heading').children('a').removeClass('open'); //remove active state to button on close
-        $('.accordion-body ul li a').css({
-            'color': '#fff'
-        });
-    });
-
-    if ($('.flexslider').length) {
-        flexslider = $('.flexslider');
-    } else {
-        flexslider = '.flexslider';
-    }
-
-    $(document).keydown(function(event) {
-        if (event.keyCode == VK_BACK_SPACE || event.keyCode == 27) {
-            if (showing_album_contents == 1) {
-                $('.album-detail-wrap').animate({
-                    right: '-107%'
-                }, 500, function() {
-                    $(flexslider).animate({
-                        'left': '0px'
-                    });
-                    showing_albums = false;
-                    showing_album_contents = 0;
-
-                });
-
-            } else if (showing_albums == false) {
-                $('#sec-div').animate({
-                    right: '-104%'
-                }, 500, function() {
-                    showing_albums = true;
-                    $(flexslider).animate({
-                        'left': '0px'
-                    });
-                    $('.alphabet').show();
-                });
-            }
-        }
-
-
-
-    });
-
-    $('.backplaylist').click(function() {
-        $('.jp-playlist').animate({
-            left: '100%'
-        }, 'slow', function() {
-            playlist_hidden = true;
-            $('.jp-playlist').hide();
-        });
-    });
-
-
-    /***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
-    $('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function() {
-
-        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
-
-        if (!$(".jp-playlist").is(":hidden")) {
-            $(".backplaylist").click();
-            return;
-        }
-
-        if (settings_hidden == false) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-
-            });
-        }
-
-
-        if ($('.jp-playlist ul li').length == 0) {
-            $('.jp-playlist').append('<p>No Songs added.</p>');
-        } else {
-            $('.jp-playlist p').remove();
-        }
-
-        $('.jp-playlist').show().animate({
-            left: '21%'
-        }, 'slow', function() {
-            playlist_hidden = false;
-        });
-
-    });
-
-    /** ----------------------------DISPLAY SETTINGS------------------------------------------------------****/
-    $('#accordion2 .accordion-group:eq(4)').click(function() {
-        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
-
-        if (parseInt($("#app-settings").css("top"), 10) > 0) {
-
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-
-            });
-            return;
-        }
-        if (playlist_hidden == false) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        }
-
-        $('#app-settings').animate({
-            top: '8%'
-        }, 'slow', function() {
-            settings_hidden = false;
-        });
-    });
-
-    $('#accordion2 .accordion-group:eq(5)').click(function() {
-        window.close();
-    });
-
-
-
-
+    init();
 
     /***----------------------------------------------------- CATEGORIES API CALL ------------------------------------------------------***/
     var url1 = baseurl + genreApi + ".js?channel_id=" + channel_id + "&callback=?";
@@ -221,7 +78,7 @@ $(document).ready(function() {
                         var index = "#page-" + x;
                         $(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.product_uri + '</p></div>');
                     });
-
+   
                     flexInit();
                 });
             });
@@ -232,21 +89,9 @@ $(document).ready(function() {
     /***------------------------------------------------ TOP SONGS API CALL -------------------------------------------------------------------------- ****/
 
     $('#top-songs-accordion').click(function() {
-        /** Hide playlist on Top songs accordian click *****/
-        if (! playlist_hidden) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        } else if (! settings_hidden) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-            });
-        }
+         showing_albums = false;
+	 showing_album_contents = false;
+         hidePlaylistAndSettings();
         //destroy divisions and flexsliders
         flexRemove();
         $(".album-detail-wrap").remove();
@@ -282,21 +127,9 @@ $(document).ready(function() {
     /***------------------------------------------------------------- TOP ARTISTS API CALL -------------------------------------------------------------------****/
 
     $('#top-artists-accordion').click(function artistsClick() {
-        /** Hide playlist on Top ten > Artists accordian click *****/
-        if (playlist_hidden == false) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        } else if (settings_hidden == false) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-            });
-        }
+        showing_albums = false;
+	showing_album_contents = false;
+        hidePlaylistAndSettings();
         //destroy divisions and flexsliders
         flexRemove();
         $(".album-detail-wrap").remove();
@@ -310,7 +143,7 @@ $(document).ready(function() {
             console.log('foooooooooooooo ' + len);
             var p = (len / 6) + 1;
             var pages = Math.floor(p);
-            createOtherTemplate();
+            createFlexSliderTemplate();
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -331,21 +164,9 @@ $(document).ready(function() {
 
     /***----------------------------------------- TOP ALBUMS API CALL -----------------------------------------------------****/
     $('#top-albums-accordion').click(function() {
-        /** Hide playlist on Top ten > albums accordian click *****/
-        if (playlist_hidden == false) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        } else if (settings_hidden == false) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-            });
-        }
+	showing_albums = true;
+	showing_album_contents = false;
+	hidePlaylistAndSettings();
         //destroy divisions and flexsliders
         flexRemove();
         flex2Remove();
@@ -359,7 +180,7 @@ $(document).ready(function() {
             var len = jsonObj.length;
             var p = (len / 6) + 1;
             var pages = Math.floor(p);
-            createOtherTemplate();
+            createFlexSliderTemplate();
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -458,21 +279,9 @@ $(document).ready(function() {
         disc_sng = true;
         disc_art = false;
         disc_alb = false;
-        /** Hide playlist on Top songs accordian click *****/
-        if (playlist_hidden == false) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        } else if (settings_hidden == false) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-            });
-        }
+        showing_albums = false;
+	showing_album_contents = false;
+	hidePlaylistAndSettings();
         //destroy divisions and flexsliders
         flexRemove();
         $(".album-detail-wrap").remove();
@@ -514,22 +323,9 @@ $(document).ready(function() {
         disc_art = true;
         disc_alb = false;
         showing_albums = false
+        showing_album_contents = false;
         $('.alphabet').show();
-        /** Hide playlist on Top ten > Artists accordian click *****/
-        if (playlist_hidden == false) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        } else if (settings_hidden == false) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-            });
-        }
+	hidePlaylistAndSettings();
         //destroy divisions and flexsliders
         flexRemove();
         $(".album-detail-wrap").remove();
@@ -569,21 +365,7 @@ $(document).ready(function() {
         disc_art = false;
         disc_alb = true;
         $('.alphabet').show();
-        /** Hide playlist on Top ten > albums accordian click *****/
-        if (playlist_hidden == false) {
-            $('.jp-playlist').animate({
-                left: '100%'
-            }, 'slow', function() {
-                playlist_hidden = true;
-                $('.jp-playlist').hide();
-            });
-        } else if (settings_hidden == false) {
-            $('#app-settings').animate({
-                top: '-85%'
-            }, 'slow', function() {
-                settings_hidden = true;
-            });
-        }
+	hidePlaylistAndSettings();
         //destroy divisions and flexsliders
         flexRemove();
         flex2Remove();
@@ -658,7 +440,7 @@ function createSongTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
 }
 
-function createOtherTemplate() {
+function createFlexSliderTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
@@ -667,41 +449,44 @@ function createOtherTemplate() {
 
 function initializeBackButton() {
     $('.back-btn').click(function(event){
-	console.log("showing albums "+showing_albums+" showing album contents"+showing_album_contents);
+       if(showing_albums) {
+	   goToArtistsView();
+       }
+       else if(showing_album_contents) {
+	   goToAlbumsView();
+       }
     });
 }
 
+function goToAlbumsView() {
+    $('.album-detail-wrap').animate({
+	right: '-107%'
+    },500,function() {
+	$(flexslider).animate({
+	    'left':'0px'
+        });
+    });
+    showing_albums = true;
+    showing_album_contents = false;
+}
 
-function createNewDivision() {
-     
+function goToArtistsView() {
+    $('#sec-div').animate({
+	right: '-104%'
+    },500,function(){
+	$(flexslider).animate({
+	    'left':'0px'
+        });
+     });
+    showing_albums = false;
+    showing_album_contents = false;
+}
+
+
+function createFlex2Template() {
+    
+    $("#sec-div").empty();
     $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="back-btn"></div>');
-
-    // $('.back-btn').click(function(event) {
-    //     alert('Back button clicked');
-    //     if (showing_album_contents == 1) {
-    //         $('.album-detail-wrap').animate({
-    //             right: '-107%'
-    //         }, 500, function() {
-    //             $(flexslider).animate({
-    //                 'left': '0px'
-    //             });
-    //             showing_albums = true;
-    //             showing_album_contents = 0;
-
-    //         });
-
-    //     } else /*if (showing_albums == false)*/ {
-    //         $('#sec-div').animate({
-    //             right: '-104%'
-    //         }, 500, function() {
-    //             showing_albums = true;
-    //             $(flexslider).animate({
-    //                 'left': '0px'
-    //             });
-    //             $('.alphabet').show();
-    //         });
-    //     }
-    // });
 
 }
 
@@ -718,60 +503,24 @@ function createDiscoverSongTemplate(no_of_pages) {
         $("#" + id).append('<li id="page' + c + '"></li>');
     }
 
-
 }
 
 function createDiscoverOtherTemplate() {
     $('.alphabet').show();
     $('#sec-div').css({'right':'-104%'});
-    $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
-        '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="thumb" />' +
-        '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div class="back-btn span2"></div> </div>');
-
-    //One more click on back button event handler exists
-
-    // $('.back-btn').click(function(event) {
-    //     if (showing_album_contents == 1) {
-    //         $('.album-detail-wrap').animate({
-    //             right: '-107%'
-    //         }, 500, function() {
-    //             $(flexslider).animate({
-    //                 'left': '0px'
-    //             });
-    //             showing_albums = false;
-    //             showing_album_contents = 0;
-
-    //         });
-    //        $('.alphabet').show();
-
-    //     } else /*if (showing_albums == false)*/ {
-    //         alert('baz');
-    //         $('.alphabet').show();
-    //         $('#sec-div').animate({
-    //             right: '-104%'
-    //         }, 500, function() {
-    //             alert('foo');
-    //             showing_albums = true;
-    //             $(flexslider).animate({
-    //                 'left': '0px'
-    //             });
-                
-    //         });
-    //     }
-    // });
-
+    createFlexSliderTemplate();
 }
 
 
 function getSongsOfAlbumOnClick(div_id) {
-    alert('called');
+    //alert('called');
     /***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
     $('#' + div_id + ' li div').each(function() {
 
         $(this).click(function() {
+            showing_albums = false;
+	    showing_album_contents = true;
             $('.alphabet').hide();
-	    showing_albums = false;
             var tmp1 = $('p', $(this)).html();
             var tmp2 = $('p:eq(1)', $(this)).html();
             $(flexslider).animate({
@@ -798,11 +547,11 @@ function getSongsOfAlbumOnClick(div_id) {
                 $('.album-detail-wrap').animate({
                     right: '0%'
                 }, 500, function() {
-                    showing_album_contents = 1;
+                    showing_album_contents = true;
                 });
 
             });
-            initializeBackButton();
+
         });
     }); //End of other-carousel
 
@@ -815,6 +564,8 @@ function getAlbumsOfArtistOnClick(div_id) {
     $('#' + div_id + ' li div').each(function() {
         //console.log(div_id);
         $(this).click(function() {
+            showing_albums = true;
+            showing_album_contents = false;
             $('.alphabet').hide();
 	    showing_albums = true;
             var temp = $('p', $(this)).html(); //console.log(temp);
@@ -832,7 +583,7 @@ function getAlbumsOfArtistOnClick(div_id) {
                     var len = list.length;
                     var p = (len / 6) + 1;
                     var pages = Math.floor(p);
-                    createNewDivision();
+                    createFlex2Template();
                     for (var c = 1; c <= pages; c++) {
                         $("#sec-carousel").append('<li id="page-' + c + '"></li>');
                     }
@@ -847,7 +598,7 @@ function getAlbumsOfArtistOnClick(div_id) {
                         $(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.label_collection_code + '</p><p class="hidden">' + item_cat.id + '</p></div>');
                     });
                     flex2Init();
-		    //initializeBackButton();
+		    initializeBackButton();
                     getSongsOfAlbumOnClick("sec-carousel");
                 });
 
@@ -861,5 +612,195 @@ function getAlbumsOfArtistOnClick(div_id) {
             });
         });
     });
+
+}
+
+function handleKeyboardAndRemoteEvents() {
+
+    $(document).keydown(function(event) {
+        if (event.keyCode == VK_BACK_SPACE || event.keyCode == 27) {
+            if (showing_album_contents == 1) {
+                $('.album-detail-wrap').animate({
+                    right: '-107%'
+                }, 500, function() {
+                    $(flexslider).animate({
+                        'left': '0px'
+                    });
+                    showing_albums = false;
+                    showing_album_contents = 0;
+
+                });
+
+            } else if (showing_albums == false) {
+                $('#sec-div').animate({
+                    right: '-104%'
+                }, 500, function() {
+                    showing_albums = true;
+                    $(flexslider).animate({
+                        'left': '0px'
+                    });
+                    $('.alphabet').show();
+                });
+            }
+        }
+
+
+
+    });
+
+}
+
+function debug() {
+    console.log("showing albums "+showing_albums+" showing album contents "+showing_album_contents);
+}
+
+function hidePlaylistAndSettings() {
+        if (! playlist_hidden) {
+            $('.jp-playlist').animate({
+                left: '100%'
+            }, 'slow', function() {
+                playlist_hidden = true;
+                $('.jp-playlist').hide();
+            });
+        } else if (! settings_hidden) {
+            $('#app-settings').animate({
+                top: '-85%'
+            }, 'slow', function() {
+                settings_hidden = true;
+            });
+        }
+
+}
+
+
+function init() {
+    
+    initializeAccordion();
+    initializeFlexSlider();
+    initializePlaylist();
+    initializeSettings();
+    handleKeyboardAndRemoteEvents();
+
+}
+
+function initializeAccordion() {
+
+    /*** TOGGLE ACCORDIAN COLOR ON SELECTED STATE *******/
+    $('.accordion-body ul li a').each(function() {
+        $(this).click(function() {
+            $('.accordion-body ul li a').css({
+                'color': '#fff'
+            });
+            $(this).css({
+                'color': 'red'
+            });
+        })
+    });
+
+    $('.collapse').live('show', function() {
+        //$(this).parent().find('a').addClass('open'); //add active state to button on open
+        $(this).parent().find('.accordion-heading').children('a').addClass('open'); //add active state to button on open
+    });
+
+    $('.collapse').live('hide', function() {
+        $(this).parent().find('.accordion-heading').children('a').removeClass('open'); //remove active state to button on close
+        $('.accordion-body ul li a').css({
+            'color': '#fff'
+        });
+    });
+
+}
+
+function initializeFlexSlider() {
+   if ($('.flexslider').length) {
+        flexslider = $('.flexslider');
+    } else {
+        flexslider = '.flexslider';
+    }
+}
+
+function initializePlaylist() {
+    $('.backplaylist').click(function() {
+        $('.jp-playlist').animate({
+            left: '100%'
+        }, 'slow', function() {
+            playlist_hidden = true;
+            $('.jp-playlist').hide();
+        });
+    });
+
+
+    /***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
+    $('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function() {
+
+        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
+
+        if (!$(".jp-playlist").is(":hidden")) {
+            $(".backplaylist").click();
+            return;
+        }
+
+        if (settings_hidden == false) {
+            $('#app-settings').animate({
+                top: '-85%'
+            }, 'slow', function() {
+                settings_hidden = true;
+
+            });
+        }
+
+
+        if ($('.jp-playlist ul li').length == 0) {
+            $('.jp-playlist').append('<p>No Songs added.</p>');
+        } else {
+            $('.jp-playlist p').remove();
+        }
+
+        $('.jp-playlist').show().animate({
+            left: '21%'
+        }, 'slow', function() {
+            playlist_hidden = false;
+        });
+
+    });
+
+}
+
+function initializeSettings() {
+
+    /** ----------------------------DISPLAY SETTINGS------------------------------------------------------****/
+    $('#accordion2 .accordion-group:eq(4)').click(function() {
+        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
+
+        if (parseInt($("#app-settings").css("top"), 10) > 0) {
+
+            $('#app-settings').animate({
+                top: '-85%'
+            }, 'slow', function() {
+                settings_hidden = true;
+
+            });
+            return;
+        }
+        if (playlist_hidden == false) {
+            $('.jp-playlist').animate({
+                left: '100%'
+            }, 'slow', function() {
+                playlist_hidden = true;
+                $('.jp-playlist').hide();
+            });
+        }
+
+        $('#app-settings').animate({
+            top: '8%'
+        }, 'slow', function() {
+            settings_hidden = false;
+        });
+    });
+
+    $('#accordion2 .accordion-group:eq(5)').click(function() {
+        window.close();
+    });
+
 
 }
