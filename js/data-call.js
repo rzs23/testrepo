@@ -566,6 +566,7 @@ function getSongsOfAlbumOnClick(div_id) {
                     $("#song-detail2").append(details.primary_artist);
                     $("#song-detail3").append(details.year);
                     //$("#song-details").append(details.primary_copyright_owner);
+                    $("#song-play").empty();
                     $.each($.parseJSON(data['album_tracks']), function(p, item1) {
                         var song_id = item1.id;
                         $("#song-play").append('<div class="span6 albmsongs" id="' + song_id + '"><span>' + item1.title + ' - </span><span>' + item1.primary_artist + '</span><p class="hidden">' + item1.product_uri + '</p></div>');
