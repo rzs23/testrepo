@@ -416,7 +416,7 @@ $(document).ready(function() {
 	/**********************/
 	
 	 /****  TOP ------->   ALBUMS----------> BACK BTN ******/
-	 $('#topalbumssongback').live('click',function(){
+	 $('#top_albums_songs_back').live('click',function(){
 		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
 			$('.flexslider').animate({ 'left':'0px'});
 		});
@@ -473,7 +473,7 @@ function createTopAlbumsFlexSliderTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div id="topalbumssongback" class="span2"></div></div>');
+        '<div class="span8 song-item" id="song-play"></div> <div id="top_albums_songs_back" class="span2"></div></div>');
 }
 
 function initializeBackButton() {
