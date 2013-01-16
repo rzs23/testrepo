@@ -377,10 +377,9 @@ $(document).ready(function() {
             var len = jsonObj.length;
             var p = (len / 6) + 1; 
             var pages = Math.floor(p);
-
-			$('.alphabet').show();
-			$('#sec-div').css({'right':'-104%'});
-			createDiscoverAlbumsFlexSliderTemplate();
+     	    $('.alphabet').show();
+	    $('#sec-div').css({'right':'-104%'});
+	    createFlexSliderTemplate("discover_albums_songs_back");
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -498,15 +497,6 @@ function createFlexSliderTemplate(songs_back_button_id) {
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
         '<div class="span8 song-item" id="song-play"></div> <div id="'+songs_back_button_id+'" class="span2"></div></div>');
 }
-
-function createDiscoverAlbumsFlexSliderTemplate() {
-    
-    $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
-        '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
-        '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div id="discover_albums_songs_back" class="span2"></div></div>');
-}
-
 
 
 
