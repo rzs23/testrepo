@@ -157,10 +157,9 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 		
 
 
-#top_artists_albums_back,#top_artists_songs_back,#top_albums_songs_back,#discover_albums_songs_back{ height: 453px; left: 91%; position: absolute; top: 0; width: 63px; }
-
- #top_artists_albums_back:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
- #top_artists_albums_back:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+#top_artists_albums_back,#top_artists_songs_back,#top_albums_songs_back,#discover_albums_songs_back{ height: 453px; left: 91%; position: absolute; top: 0; width: 63px; background: url("../img/back_playlist_normal.png") no-repeat scroll 0 50% transparent;  }
+#top_artists_albums_back:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+#top_artists_albums_back:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
  
   #top_artists_songs_back:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
  #top_artists_songs_back:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
