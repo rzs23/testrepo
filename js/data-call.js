@@ -380,8 +380,8 @@ $(document).ready(function() {
             var len = jsonObj.length;
             var p = (len / 6) + 1; 
             var pages = Math.floor(p);
-            createDiscoverOtherTemplate();
-
+            //createDiscoverOtherTemplate();
+			createDiscoverAlbumsFlexSliderTemplate();
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -421,6 +421,26 @@ $(document).ready(function() {
 			$('.flexslider').animate({ 'left':'0px'});
 		});
 	  });
+	/**********************/  
+	  
+	  
+	  
+	   /****  TOP ------->   ALBUMS----------> BACK BTN ******/
+	 $('#topalbumssongback').live('click',function(){
+		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
+			$('.flexslider').animate({ 'left':'0px'});
+		});
+	  });
+	/**********************/ 
+	
+	 /****  TOP ------->   ALBUMS----------> BACK BTN ******/
+	 $('#discoveralumsback').live('click',function(){
+		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
+			$('.flexslider').animate({ 'left':'0px'});
+		});
+	  });
+	/**********************/ 
+	 
    
 }); //END OF DOM
 
@@ -466,6 +486,15 @@ function createFlexSliderTemplate() {
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
         '<div class="span8 song-item" id="song-play"></div> <div id="songsback" class="span2"></div></div>');
+}
+
+function createDiscoverAlbumsFlexSliderTemplate() {
+    $('.alphabet').show();
+    $('#sec-div').css({'right':'-104%'});
+    $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
+        '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
+        '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
+        '<div class="span8 song-item" id="song-play"></div> <div id="discoveralumsback" class="span2"></div></div>');
 }
 
 
