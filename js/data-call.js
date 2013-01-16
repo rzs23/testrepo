@@ -143,7 +143,7 @@ $(document).ready(function() {
             console.log('foooooooooooooo ' + len);
             var p = (len / 6) + 1;
             var pages = Math.floor(p);
-            createFlexSliderTemplate();
+            createFlexSliderTemplate("top_artists_songs_back");
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -158,7 +158,7 @@ $(document).ready(function() {
                 $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.name + '</span><span class="span2">' + item.role + '</span><p class="hidden">' + item.id + '</p></div>');
             });
             flexInit();
-            getAlbumsOfArtistOnClick("other-carousel");
+            getAlbumsOfArtistOnClick("other-carousel","top_artists_albums_back");
         });
     });
 
@@ -180,8 +180,7 @@ $(document).ready(function() {
             var len = jsonObj.length;
             var p = (len / 6) + 1;
             var pages = Math.floor(p);
-           // createFlexSliderTemplate();
-		   createTopAlbumsFlexSliderTemplate();
+            createFlexSliderTemplate("top_albums_songs_back");
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -268,10 +267,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
     /***------------------------------------------------ DISCOVER SONGS API CALL -------------------------------------------------------------------------- ****/
 
 
@@ -339,7 +334,9 @@ $(document).ready(function() {
             var len = jsonObj.length;
             var p = (len / 6) + 1;
             var pages = Math.floor(p);
-            createDiscoverOtherTemplate();
+            $('.alphabet').show();
+            $('#sec-div').css({'right':'-104%'});
+            createFlexSliderTemplate("discover_artists_songs_back");
             for (var c = 1; c <= pages; c++) {
                 $("#other-carousel").append('<li id="page' + c + '"></li>');
             }
@@ -354,7 +351,7 @@ $(document).ready(function() {
                 $(index).append('<div tabindex="' + j + '"><a><img src="' + item.image_uri + '" alt="thumbnail" id="' + k + ' "/></a><span class="span2">' + item.name + '</span><span class="span2">' + item.role + '</span><p class="hidden">' + item.id + '</p></div>');
             });
             flexInit();
-            getAlbumsOfArtistOnClick("other-carousel");
+            getAlbumsOfArtistOnClick("other-carousel","discover_artists_albums_back");
 
         });
     });
@@ -380,7 +377,7 @@ $(document).ready(function() {
             var len = jsonObj.length;
             var p = (len / 6) + 1; 
             var pages = Math.floor(p);
-            //createDiscoverOtherTemplate();
+
 			$('.alphabet').show();
 			$('#sec-div').css({'right':'-104%'});
 			createDiscoverAlbumsFlexSliderTemplate();
@@ -402,7 +399,13 @@ $(document).ready(function() {
             getSongsOfAlbumOnClick("other-carousel");
         });
     });
-     /****  TOP ------->   ARTISTS ----------> BACK BTN ******/
+
+   
+}); //END OF DOM
+
+function initializeBackButtons() {
+
+          //Top Artists
 	 
 	  $('#top_artists_albums_back').live('click',function(){
 	     $('#sec-div').animate({right: '-104%' },500,function() {
@@ -410,42 +413,48 @@ $(document).ready(function() {
 		});
 	  });
 	  
-	    $('#top_artists_songs_back').live('click',function(){
+          $('#top_artists_songs_back').live('click',function(){
 	     $('.album-detail-wrap').animate({right: '-100%' },500,function() {
 			$('#sec-div #flex2').animate({ 'left':'0px'});
 		});
 	  });
-	/**********************/
+
 	
-	 /****  TOP ------->   ALBUMS----------> BACK BTN ******/
+         //Top Albums 
+
 	 $('#top_albums_songs_back').live('click',function(){
 		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
 			$('.flexslider').animate({ 'left':'0px'});
 		});
 	  });
-	/**********************/  
-	  
-	  
-	  
-	   /****  TOP ------->   ALBUMS----------> BACK BTN ******/
-	 $('#topalbumssongback').live('click',function(){
+
+          //Discover Artists
+
+	  $('#discover_artists_albums_back').live('click',function(){
+	     $('#sec-div').animate({right: '-104%' },500,function() {
+			$('#main-div:eq(0) .flexslider').animate({ 'left':'0px'});
+		});
+	  });
+
+	 $('#discover_artists_songs_back').live('click',function(){
 		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
 			$('.flexslider').animate({ 'left':'0px'});
 		});
 	  });
-	/**********************/ 
-	
-	 /****  DISCOVER ------->   ALBUMS----------> BACK BTN ******/
+
+
+         //Discover Albums	
+
 	 $('#discover_albums_songs_back').live('click',function(){
 		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
 			$('.flexslider').animate({ 'left':'0px'});
 		        $('.alphabet').show();
 		});
 	  });
-	/**********************/ 
-	 
-   
-}); //END OF DOM
+
+
+
+}
 
 function flexInit() {
     $('.flexslider').flexslider({
@@ -484,11 +493,11 @@ function createSongTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="carousel"></ul></div>');
 }
 
-function createFlexSliderTemplate() {
+function createFlexSliderTemplate(songs_back_button_id) {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div id="top_artists_songs_back" class="span2"></div></div>');
+        '<div class="span8 song-item" id="song-play"></div> <div id="'+songs_back_button_id+'" class="span2"></div></div>');
 }
 
 function createDiscoverAlbumsFlexSliderTemplate() {
@@ -500,53 +509,12 @@ function createDiscoverAlbumsFlexSliderTemplate() {
 }
 
 
-function createTopAlbumsFlexSliderTemplate() {
-    $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
-        '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
-        '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div id="top_albums_songs_back" class="span2"></div></div>');
-}
-
-function initializeBackButton() {
-    $('.back-btn').click(function(event){
-       if(showing_albums) {
-	   goToArtistsView();
-       }
-       else if(showing_album_contents) {
-	   goToAlbumsView();
-       }
-    });
-}
-
-function goToAlbumsView() {
-    $('.album-detail-wrap').animate({
-	right: '-107%'
-    },500,function() {
-	$(flexslider).animate({
-	    'left':'0px'
-        });
-    });
-    showing_albums = true;
-    showing_album_contents = false;
-}
-
-function goToArtistsView() {
-    $('#sec-div').animate({
-	right: '-104%'
-    },500,function(){
-	$(flexslider).animate({
-	    'left':'0px'
-        });
-     });
-    showing_albums = false;
-    showing_album_contents = false;
-}
 
 
-function createFlex2Template() {
+function createFlex2Template(albums_back_button_id) {
     
     $("#sec-div").empty();
-    $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="" id="top_artists_albums_back"></div>');
+    $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="" id="'+albums_back_button_id+'"></div>');
 
 }
 
@@ -564,13 +532,6 @@ function createDiscoverSongTemplate(no_of_pages) {
     }
 
 }
-
-function createDiscoverOtherTemplate() {
-    $('.alphabet').show();
-    $('#sec-div').css({'right':'-104%'});
-    createFlexSliderTemplate();
-}
-
 
 function getSongsOfAlbumOnClick(div_id) {
     //alert('called');
@@ -619,7 +580,7 @@ function getSongsOfAlbumOnClick(div_id) {
 }
 
 
-function getAlbumsOfArtistOnClick(div_id) {
+function getAlbumsOfArtistOnClick(div_id,albums_back_button_id) {
     /***------------ GETTING ALBUMS OF THE ARTIST -------------***/
 
     $('#' + div_id + ' li div').each(function() {
@@ -644,7 +605,7 @@ function getAlbumsOfArtistOnClick(div_id) {
                     var len = list.length;
                     var p = (len / 6) + 1;
                     var pages = Math.floor(p);
-                    createFlex2Template();
+                    createFlex2Template(albums_back_button_id);
                     for (var c = 1; c <= pages; c++) {
                         $("#sec-carousel").append('<li id="page-' + c + '"></li>');
                     }
@@ -659,7 +620,6 @@ function getAlbumsOfArtistOnClick(div_id) {
                         $(index).append('<div tabindex="' + j2 + '" id="' + k + ' "><a><img src="' + item_cat.image_uri + '" alt="thumbnail" /></a><span class="span2">' + item_cat.title + '</span><span class="span2">' + item_cat.primary_artist + '</span><p class="hidden">' + item_cat.label_collection_code + '</p><p class="hidden">' + item_cat.id + '</p></div>');
                     });
                     flex2Init();
-		    initializeBackButton();
                     getSongsOfAlbumOnClick("sec-carousel");
                 });
 
@@ -740,6 +700,7 @@ function init() {
     initializeFlexSlider();
     initializePlaylist();
     initializeSettings();
+    initializeBackButtons();
     handleKeyboardAndRemoteEvents();
 
 }
