@@ -435,10 +435,11 @@ $(document).ready(function() {
 	  });
 	/**********************/ 
 	
-	 /****  TOP ------->   ALBUMS----------> BACK BTN ******/
+	 /****  DISCOVER ------->   ALBUMS----------> BACK BTN ******/
 	 $('#discover_albums_songs_back').live('click',function(){
 		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
 			$('.flexslider').animate({ 'left':'0px'});
+		        $('.alphabet').show();
 		});
 	  });
 	/**********************/ 
