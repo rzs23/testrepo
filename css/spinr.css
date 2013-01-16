@@ -156,19 +156,29 @@ background: url('../img/exit_btn.png') no-repeat, linear-gradient(to bottom, #10
 /*.container .row #main-div #sec-div*/ .back-btn:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
 		
 
+<<<<<<< HEAD
 #albumsback,#songsback,#topalbumssongback,#discoveralumsback{ height: 453px; left: 91%; position: absolute; top: 0; width: 63px;
+=======
+#top_artists_albums_back,#top_artists_songs_back,#top_albums_songs_back{ height: 453px; left: 91%; position: absolute; top: 0; width: 63px;
+>>>>>>> ac1cc154e320188c854d013088a5d63472b02a4d
 									background: url("../img/back_playlist_normal.png") no-repeat scroll 0 50% transparent; }
- #albumsback:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
- #albumsback:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+ #top_artists_albums_back:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+ #top_artists_albums_back:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
  
-  #songsback:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
- #songsback:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+  #top_artists_songs_back:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+ #top_artists_songs_back:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
 	
+<<<<<<< HEAD
 #topalbumssongback:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
 #topalbumssongback:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
 
 #discoveralumsback:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
 #discoveralumsback:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+=======
+#top_albums_songs_back:hover{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+#top_albums_songs_back:focus{ background: url("../img/back_playlist_hover.png") no-repeat scroll 0 50% transparent; }
+	
+>>>>>>> ac1cc154e320188c854d013088a5d63472b02a4d
 .container .row  #main-div .album-detail-wrap{width: 100%; height: 493px; margin: 0; top:0; right: -100%; position: absolute; overflow: hidden;  background: #fff;}
 .container .row  #main-div .album-detail-wrap .albm-desc{ float:left; height: 214px; margin-top: 10px;}	
 .container .row  #main-div .album-detail-wrap .albm-desc img{ height: 214px; width: 220px; }

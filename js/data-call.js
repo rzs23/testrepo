@@ -402,13 +402,13 @@ $(document).ready(function() {
     });
      /****  TOP ------->   ARTISTS ----------> BACK BTN ******/
 	 
-	  $('#albumsback').live('click',function(){
+	  $('#top_artists_albums_back').live('click',function(){
 	     $('#sec-div').animate({right: '-104%' },500,function() {
 			$('#main-div:eq(0) .flexslider').animate({ 'left':'0px'});
 		});
 	  });
 	  
-	    $('#songsback').live('click',function(){
+	    $('#top_artists_songs_back').live('click',function(){
 	     $('.album-detail-wrap').animate({right: '-100%' },500,function() {
 			$('#sec-div #flex2').animate({ 'left':'0px'});
 		});
@@ -416,7 +416,7 @@ $(document).ready(function() {
 	/**********************/
 	
 	 /****  TOP ------->   ALBUMS----------> BACK BTN ******/
-	 $('#topalbumssongback').live('click',function(){
+	 $('#top_albums_songs_back').live('click',function(){
 		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
 			$('.flexslider').animate({ 'left':'0px'});
 		});
@@ -485,7 +485,7 @@ function createFlexSliderTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div id="songsback" class="span2"></div></div>');
+        '<div class="span8 song-item" id="song-play"></div> <div id="top_artists_songs_back" class="span2"></div></div>');
 }
 
 function createDiscoverAlbumsFlexSliderTemplate() {
@@ -502,7 +502,7 @@ function createTopAlbumsFlexSliderTemplate() {
     $("#main-div").append('<div class="flexslider"><ul class="slides" id="other-carousel"></ul></div><div id="sec-div" class="row main-carousel"></div>' +
         '<div class="row album-detail-wrap"> <div class="span3 albm-desc"><img src="" alt="" />' +
         '<div class="span3"><span id="song-detail1" class="span3"></span><span id="song-detail2" class="span3"></span><span id="song-detail3" class="span3"></span></div></div>' +
-        '<div class="span8 song-item" id="song-play"></div> <div id="topalbumssongback" class="span2"></div></div>');
+        '<div class="span8 song-item" id="song-play"></div> <div id="top_albums_songs_back" class="span2"></div></div>');
 }
 
 function initializeBackButton() {
@@ -544,7 +544,7 @@ function goToArtistsView() {
 function createFlex2Template() {
     
     $("#sec-div").empty();
-    $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="" id="albumsback"></div>');
+    $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="" id="top_artists_albums_back"></div>');
 
 }
 
