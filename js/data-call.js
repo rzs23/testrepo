@@ -256,8 +256,7 @@ $(document).ready(function() {
                 if (disc_alb) {
                     getSongsOfAlbumOnClick("carousel");
                 } else if (disc_art) {
-                    getAlbumsOfArtistOnClick("other-carousel");
-                    //getAlbumsOfArtistOnClickalphabetwise("other-carousel")
+                    getAlbumsOfArtistOnClick("other-carousel","discover_artists_albums_back");
                 }
 
 
@@ -432,6 +431,7 @@ function initializeBackButtons() {
 	  $('#discover_artists_albums_back').live('click',function(){
 	     $('#sec-div').animate({right: '-104%' },500,function() {
 			$('#main-div:eq(0) .flexslider').animate({ 'left':'0px'});
+		        $('.alphabet').show();
 		});
 	  });
 
@@ -501,7 +501,6 @@ function createFlexSliderTemplate(songs_back_button_id) {
 
 
 function createFlex2Template(albums_back_button_id) {
-    
     $("#sec-div").empty();
     $("#sec-div").append('<div class= "flexslider" id="flex2"><ul class="slides" id="sec-carousel"></ul></div><div class="" id="'+albums_back_button_id+'"></div>');
 
@@ -523,7 +522,6 @@ function createDiscoverSongTemplate(no_of_pages) {
 }
 
 function getSongsOfAlbumOnClick(div_id) {
-    //alert('called');
     /***-----------GETTING SONGS OF A PARTICULAR ALBUM ----------------------****/
     $('#' + div_id + ' li div').each(function() {
 
@@ -570,6 +568,7 @@ function getSongsOfAlbumOnClick(div_id) {
 
 
 function getAlbumsOfArtistOnClick(div_id,albums_back_button_id) {
+
     /***------------ GETTING ALBUMS OF THE ARTIST -------------***/
 
     $('#' + div_id + ' li div').each(function() {
