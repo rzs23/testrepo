@@ -436,12 +436,11 @@ function initializeBackButtons() {
 		});
 	  });
 
-	 $('#discover_artists_songs_back').live('click',function(){
-		$('.album-detail-wrap').animate({right: '-104%' },500,function() {
-			$('.flexslider').animate({ 'left':'0px'});
+          $('#discover_artists_songs_back').live('click',function(){
+	     $('.album-detail-wrap').animate({right: '-100%' },500,function() {
+			$('#sec-div #flex2').animate({ 'left':'0px'});
 		});
 	  });
-
 
          //Discover Albums	
 
