@@ -31,8 +31,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f60100', end
 
 .container .row .accordion{ margin: 0 15px 0 0; height: 493px; background: url('../img/cat-bg.png') repeat-y;}
 .container .row .accordion .accordion-group{ border: 0px; border-radius: 0; }
-.container .row .accordion .accordion-group .accordion-body ul{ list-style: none outside none; margin: 0 0 0 27px; }
-.container .row .accordion .accordion-group:nth-child(3) .accordion-body ul{  height: 204px; margin: 0 0 0 27px; list-style: none outside none;  overflow-y: auto;}
+.container .row .accordion .accordion-group .accordion-body ul{ list-style: none outside none; margin: 0 0 0 65px; }
+.container .row .accordion .accordion-group:nth-child(3) .accordion-body ul{  height: 204px; margin: 0 0 0 64px; list-style: none outside none;  overflow-y: auto;}
 
 .container .row .accordion .accordion-group .accordion-body ul li {padding: 2px 0;}
 .container .row .accordion .accordion-group .accordion-body ul li a{ color: #fff; }
@@ -41,7 +41,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f60100', end
 .container .row .accordion .accordion-inner div{ height: 87px; margin-top: 32px; }
 .container .row .accordion .accordion-inner div span{ width: 100%; display: inline-block; }
 .container .row .accordion .accordion-group .accordion-heading a{border: none; border-radius:0; box-shadow: none; color: red; outline: medium none;
-													padding: 13px 15px; text-align: center; text-shadow: none; }
+													padding: 13px 15px; text-indent: 48px; text-shadow: none; }
 													
 .container .row .accordion .accordion-group .accordion-heading a:hover,.container .row .accordion .accordion-group .accordion-heading a:active,
 .container .row .accordion .accordion-group .accordion-heading a.open{
