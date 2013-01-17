@@ -742,10 +742,7 @@ function initializePlaylist() {
 
     /***---------------DISPLAY PLAYLIST -------------------------------------------------------------------***/
     $('#accordion2 .accordion-group:eq(3) .accordion-heading .accordion-toggle').click(function() {
-
-        //console.log("playlist_hidden="+playlist_hidden+"settings_hidden="+settings_hidden);
-
-        if (!$(".jp-playlist").is(":hidden")) {
+        if (! $(".jp-playlist").is(":hidden")) {
             $(".backplaylist").click();
             return;
         }
