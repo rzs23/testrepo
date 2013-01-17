@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     //Initialize Playlist
 
-    var myPlaylist = new jPlayerPlaylist({
+    myPlaylist = new jPlayerPlaylist({
 
         jPlayer: "#jquery_jplayer_N",
         cssSelectorAncestor: "#jp_container_N"
@@ -43,6 +43,8 @@ $(document).ready(function() {
         solution: "html,flash"
     });
 
+    //Add existing items in localStorage to playlist
+
     for (var i = 0; i < localStorage.length; i++) {
         var item = localStorage.getItem(i);
         var song_url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&track_id=" + item + "&callback=?";
@@ -63,6 +65,9 @@ $(document).ready(function() {
 
     var index = 0;
     var items = [];
+    
+   //Handle clicking on songs appearing in the carousel
+  
     $('#carousel li div').live('click', function() {
         var tmpid = $(this).attr("id");
         if ($.inArray(tmpid, items) > -1) {
@@ -104,6 +109,8 @@ $(document).ready(function() {
             setTimeout("$('#clkadd').animate({top:'-40%'},'slow')", 1000); //pause for 4 seconds and then fade out
         }
     });
+
+    //Handle clicking on songs in the list that gets shown when an album is clicked
 
     $('#song-play div').live('click', function() {
         var tmpid = $(this).attr("id");
@@ -228,9 +235,11 @@ $(document).ready(function() {
     $("#playlist-option-displayTime-0").click(function() {
         myPlaylist.option("displayTime", 0);
     });
+
     $("#playlist-option-displayTime-fast").click(function() {
         myPlaylist.option("displayTime", "fast");
     });
+
     $("#playlist-option-displayTime-slow").click(function() {
         myPlaylist.option("displayTime", "slow");
     });
