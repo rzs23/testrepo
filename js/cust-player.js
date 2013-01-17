@@ -9,6 +9,9 @@ var tagApi = "/songs/get_tag_list";
 var flexslider;
 
 $(document).ready(function() {
+
+    //Initialize Playlist
+
     var myPlaylist = new jPlayerPlaylist({
 
         jPlayer: "#jquery_jplayer_N",
@@ -21,6 +24,8 @@ $(document).ready(function() {
             duration: '.jp-duration'
         }
     });
+
+    //Initialize jPlayer
 
     $("#jquery_jplayer_N").jPlayer({
         ready: function() {
@@ -39,11 +44,8 @@ $(document).ready(function() {
     });
 
     for (var i = 0; i < localStorage.length; i++) {
-        console.log("foo");
         var item = localStorage.getItem(i);
-        console.log(item);
         var song_url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&track_id=" + item + "&callback=?";
-        console.log(song_url);
         $.getJSON(song_url, function(data) {
             var jsonObj = $.parseJSON(data.songs_by_id);
             myPlaylist.add({
@@ -54,7 +56,7 @@ $(document).ready(function() {
                 id: jsonObj.id,
                 mp3: jsonObj.product_uri,
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
-                poster: "http://localhost/spinr-web/img/thumb.jpg"
+                poster: ""
             });
         });
     }
@@ -62,7 +64,6 @@ $(document).ready(function() {
     var index = 0;
     var items = [];
     $('#carousel li div').live('click', function() {
-        console.log('its getting called...');
         var tmpid = $(this).attr("id");
         if ($.inArray(tmpid, items) > -1) {
             $('#clkadd').stop(true).html('Song already exist in playlist').css({
@@ -85,7 +86,7 @@ $(document).ready(function() {
                 id: $(this).attr('id'),
                 mp3: song,
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
-                poster: "http://localhost/spinr-web/img/thumb.jpg"
+                poster: ""
             });
 
             if ($('.jp-play').is(":visible")) {
@@ -126,7 +127,7 @@ $(document).ready(function() {
                 id: $(this).attr('id'),
                 mp3: song,
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
-                poster: "http://localhost/spinr-web/img/thumb.jpg"
+                poster: ""
             });
 
             if ($('.jp-play').is(":visible")) {
@@ -168,7 +169,6 @@ $(document).ready(function() {
         var item_rmv = $(this).parents('li').attr('id');
         items.splice($.inArray($(this).parents('li').attr('id'), items), 1);
         var c = items.length;
-        console.log(c);
         for (var i = 0; i < localStorage.length; i++) {
             if (i < c) {
                 localStorage.setItem(i, items[i]);
@@ -289,3 +289,4 @@ $(document).ready(function() {
     });
 
 });
+
