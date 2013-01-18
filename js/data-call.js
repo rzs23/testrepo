@@ -686,7 +686,7 @@ function init() {
     
     initializeAccordion();
     initializeFlexSlider();
-    initializePlaylist();
+    initializePlaylistBackButton();
     initializeSettings();
     initializeBackButtons();
     handleKeyboardAndRemoteEvents();
@@ -729,7 +729,7 @@ function initializeFlexSlider() {
     }
 }
 
-function initializePlaylist() {
+function initializePlaylistBackButton() {
     $('.backplaylist').click(function() {
         $('.jp-playlist').animate({
             left: '100%'

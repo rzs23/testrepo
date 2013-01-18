@@ -10,67 +10,16 @@ var flexslider;
 
 $(document).ready(function() {
 
-    //Initialize Playlist
 
-    myPlaylist = new jPlayerPlaylist({
+    songs_in_playlist = initializePlaylist(); /* Instantiate playlist object and add existing items in localstorage to the playlist
+                                                     and return an array of all song id's in the playlist */
+    initializeJPlayer();
 
-        jPlayer: "#jquery_jplayer_N",
-        cssSelectorAncestor: "#jp_container_N"
-    }, [
-
-    ], {
-        playlistOptions: {
-            enableRemoveControls: true,
-            duration: '.jp-duration'
-        }
-    });
-
-    //Initialize jPlayer
-
-    $("#jquery_jplayer_N").jPlayer({
-        ready: function() {
-            $(this).jPlayer("setMedia", {
-                mp3: "",
-                preload: "auto",
-            }).jPlayer("play"); // auto play
-        },
-        ended: function(event) {
-            $(this).jPlayer("play");
-        },
-        swfPath: "js",
-        supplied: "mp3",
-        wmode: "window",
-        solution: "html,flash"
-    });
-
-    //Add existing items in localStorage to playlist
-
-    for (var i = 0; i < localStorage.length; i++) {
-        var item = localStorage.getItem(i);
-        var song_url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&track_id=" + item + "&callback=?";
-        $.getJSON(song_url, function(data) {
-            var jsonObj = $.parseJSON(data.songs_by_id);
-            myPlaylist.add({
-                title: jsonObj.title,
-                artist: jsonObj.primary_artist,
-                free: true,
-                thumb: jsonObj.image_uri,
-                id: jsonObj.id,
-                mp3: jsonObj.product_uri,
-                oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
-                poster: ""
-            });
-        });
-    }
-
-    var index = 0;
-    var items = [];
-    
-   //Handle clicking on songs appearing in the carousel
-  
+    //Handle clicking on songs appearing in the carousel
     $('#carousel li div').live('click', function() {
-        var tmpid = $(this).attr("id");
-        if ($.inArray(tmpid, items) > -1) {
+        var song_id = $(this).attr("id").trim();
+        if (existsInPlaylist(song_id,songs_in_playlist)) {
+            //Show a message indicating that song already added to playlist
             $('#clkadd').stop(true).html('Song already exist in playlist').css({
                 'background': '#D52224'
             }).animate({
@@ -78,10 +27,7 @@ $(document).ready(function() {
             }, "500");
             setTimeout("$('#clkadd').animate({top:'-40%'},'slow')", 1000); //pause for 4 seconds and then fade out
         } else {
-
-            items.push(tmpid);
-            localStorage.setItem(index, tmpid);
-            index++;
+	    //Add to playlist
             var song = $('p', $(this)).html();
             myPlaylist.add({
                 title: $('span', $(this)).html(),
@@ -93,14 +39,14 @@ $(document).ready(function() {
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
                 poster: ""
             });
+            songs_in_playlist.push(song_id);
 
-            if ($('.jp-play').is(":visible")) {
-                $('.jp-controls li:eq(1) a').trigger('click');
-            } else {
-                myPlaylist.next();
-            }
-            $('.song-thumb img').attr('src', myPlaylist.playlist[myPlaylist.current].thumb);
-            $('.albmtitle h5').html(myPlaylist.playlist[myPlaylist.current].title);
+	    //Save in localstorage
+	    save(song_id);
+	    
+	    //Start playing the song
+	    play(song_id);
+
             $('#clkadd').stop(true).html('Song added to playlist!').css({
                 'background': '#78932D'
             }).animate({
@@ -111,10 +57,9 @@ $(document).ready(function() {
     });
 
     //Handle clicking on songs in the list that gets shown when an album is clicked
-
     $('#song-play div').live('click', function() {
-        var tmpid = $(this).attr("id");
-        if ($.inArray(tmpid, items) > -1) {
+        var song_id = $(this).attr("id").trim();
+        if (existsInPlaylist(song_id,songs_in_playlist)) {
             $('#clkadd').stop(true).html('Song already exist in playlist').css({
                 'background': '#D52224'
             }).animate({
@@ -123,8 +68,6 @@ $(document).ready(function() {
             setTimeout("$('#clkadd').animate({top:'-40%'},'slow')", 1000); //pause for 4 seconds and then fade out
         } else {
 
-            items.push(tmpid);
-            index++;
             var song = $('p', $(this)).html();
             myPlaylist.add({
                 title: $('span', $(this)).html(),
@@ -136,13 +79,14 @@ $(document).ready(function() {
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
                 poster: ""
             });
+            songs_in_playlist.push(song_id);
 
             if ($('.jp-play').is(":visible")) {
                 $('.jp-controls li:eq(1) a').trigger('click');
             } else {
                 myPlaylist.next();
             }
-            $('.song-thumb img').attr('src', $(".album-detail-wrap div img").attr("src"));
+
             $('.albmtitle h5').html(myPlaylist.playlist[myPlaylist.current].title);
             $('#clkadd').stop(true).html('Song added to playlist!').css({
                 'background': '#78932D'
@@ -154,36 +98,35 @@ $(document).ready(function() {
     });
 
     $('.saveplaylist').click(function() {
-        if (items.length == 0) alert("Add items to the playlist.");
-        else {
-            for (var i = 0; i < items.length; i++) {
-                localStorage.setItem(i, items[i]);
+        if (localStorage.length == 0)
+	    alert("No items exist in playist !");
+        else  {
+            for (var i = 0; i < songs_in_playlist.length; i++) {
+                save(songs_in_playlist[i]);
             }
         }
     });
 
     $('.deleteplaylist').click(function() {
-        if (items.length == 0) alert("No items in playlist.");
+        if (songs_in_playlist.length == 0) alert("No items in playlist.");
         else {
-            localStorage.clear();
-            items.splice(0, items.length);
-
+            localStorage.clear(); //Remove all song id's from localstorage
+	    $('.jp-playlist ul').empty(); //Remove all songs from playlist
+            songs_in_playlist.splice(0, songs_in_playlist.length); //Clear the songs_in_playlist array
         }
     });
 
 
     $('.jp-playlist ul li .jp-playlist-item-remove').live('click', function() {
-        var item_rmv = $(this).parents('li').attr('id');
-        items.splice($.inArray($(this).parents('li').attr('id'), items), 1);
-        var c = items.length;
-        for (var i = 0; i < localStorage.length; i++) {
-            if (i < c) {
-                localStorage.setItem(i, items[i]);
-            } else {
-                localStorage.removeItem(i);
-            }
-        }
-        if (items.length == 0) {
+        var item_to_remove = $(this).parents('li').attr('id').trim();
+        //Remove from songs_in_playlist array
+        songs_in_playlist.splice(songs_in_playlist.indexOf(item_to_remove),1);
+        //Remove from playlist
+	$(".jp-playlist ul li[id='"+item_to_remove+"']").remove();
+        //Remove from localstorage
+        remove(item_to_remove);
+
+        if (songs_in_playlist.length == 0) {
             $('.jp-playlist').append('<p>No songs exists!!</p>');
 
         }
@@ -299,3 +242,129 @@ $(document).ready(function() {
 
 });
 
+
+function initializePlaylist() {
+
+    var songs_in_playlist = [];
+
+    myPlaylist = new jPlayerPlaylist({
+
+        jPlayer: "#jquery_jplayer_N",
+        cssSelectorAncestor: "#jp_container_N"
+    }, [
+
+    ], {
+        playlistOptions: {
+            enableRemoveControls: true,
+            duration: '.jp-duration'
+        }
+    });
+
+    //Add existing items in localStorage to playlist
+
+    for (var i = 0; i < localStorage.length; i++) {
+        var item = localStorage.getItem(i);
+	songs_in_playlist.push(item);
+        var song_url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&track_id=" + item + "&callback=?";
+        $.getJSON(song_url, function(data) {
+            var jsonObj = $.parseJSON(data.songs_by_id);
+            myPlaylist.add({
+                title: jsonObj.title,
+                artist: jsonObj.primary_artist,
+                free: true,
+                thumb: jsonObj.image_uri,
+                id: jsonObj.id,
+                mp3: jsonObj.product_uri,
+                oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
+                poster: ""
+            });
+        });
+    }
+
+    return songs_in_playlist;
+}
+
+function initializeJPlayer() {
+
+    $("#jquery_jplayer_N").jPlayer({
+        ready: function() {
+            $(this).jPlayer("setMedia", {
+                mp3: "",
+                preload: "auto",
+            }).jPlayer("play"); // auto play
+        },
+        ended: function(event) {
+            $(this).jPlayer("play");
+        },
+        swfPath: "js",
+        supplied: "mp3",
+        wmode: "window",
+        solution: "html,flash"
+    });
+}
+
+function isStored(song_id) {
+    for(var i = 0 ; i < localStorage.length ; i++) {
+	if(localStorage.getItem(i) == song_id)
+	    return true;
+    }
+
+    return false;
+}
+
+function save(song_id) {
+
+    //Save the passed in song id in localStorage if it is not already saved
+    if(! isStored(song_id))
+      localStorage.setItem(localStorage.length,song_id);
+}
+
+function remove(song_id) {
+    console.log(song_id);
+    //Remove the passed in song_id from localstorage if found
+    for(var i = 0 ; i < localStorage.length ; i++) {
+	if(localStorage.getItem(i) == song_id) {
+	    localStorage.removeItem(i);
+	    return ;
+        }
+    }
+}
+
+function existsInPlaylist(song_id,playlist) {
+    //Check if song_id exists in the playlist array
+    if($.inArray(song_id,playlist) == -1)
+	return false;
+    else
+	return true;
+}
+
+
+function sizeOfPlaylist() {
+   return $(".jp-playlist ul li").size();
+}
+
+function play(song_id) {
+   console.log(song_id);
+   //Get the id's of all songs in the playlist
+   var ids = $('.jp-playlist ul li').map(function(i,element) {return $(element).attr('id').trim();});
+   console.log(ids);
+   //Get the index of the song from the playlist
+   var index = 0;
+   for(var i = 0 ; i < ids.length ; i++) {
+       if(ids[i] == song_id) {
+	   index = i;
+	   break;
+       }
+   }
+   //Play the song
+   myPlaylist.play(index);
+   //Set the song thumbnail on the player
+   $('.song-thumb img').attr('src',myPlaylist.playlist[myPlaylist.current].thumb);   
+   //Set the song title on the player
+   $('.albmtitle h5').html(myPlaylist.playlist[myPlaylist.current].title);   
+}
+
+function log() {
+  console.log("songs_in_playlist length="+songs_in_playlist.length+" localstorage length="+localStorage.length+" playlist length="+sizeOfPlaylist());
+
+}
