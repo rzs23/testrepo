@@ -124,7 +124,7 @@ $(document).ready(function() {
         //Remove from playlist
 	$(".jp-playlist ul li[id='"+item_to_remove+"']").remove();
         //Remove from localstorage
-        remove(item_to_remove);
+        removeFromLocalStorage(item_to_remove);
         console.log(songs_in_playlist.length);
         if (songs_in_playlist.length == 0) {
             $('.jp-playlist').append('<p>No songs added!!</p>');
@@ -262,13 +262,13 @@ function initializePlaylist() {
 
     //Add existing items in localStorage to playlist
 
-    for (var i = 0; i < localStorage.length; i++) {
-        var item = localStorage.getItem(i);
+    for (var key in localStorage) {
+	var item = localStorage.getItem(key);
 	songs_in_playlist.push(item);
         var song_url = baseurl + songsApi + ".js?channel_id=" + channel_id + "&track_id=" + item + "&callback=?";
         $.getJSON(song_url, function(data) {
-            var jsonObj = $.parseJSON(data.songs_by_id);
-            myPlaylist.add({
+	    var jsonObj = $.parseJSON(data.songs_by_id);
+	    myPlaylist.add({
                 title: jsonObj.title,
                 artist: jsonObj.primary_artist,
                 free: true,
@@ -277,7 +277,7 @@ function initializePlaylist() {
                 mp3: jsonObj.product_uri,
                 oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
                 poster: ""
-            });
+	    });
         });
     }
 
@@ -319,17 +319,16 @@ function save(song_id) {
       localStorage.setItem(localStorage.length,song_id);
 }
 
-function remove(song_id) {
+function removeFromLocalStorage(song_id) {
     console.log(song_id);
     //Remove the passed in song_id from localstorage if found
-    for(var i = 0 ; i < localStorage.length ; i++) {
-	if(localStorage.getItem(i) == song_id) {
-	    localStorage.removeItem(i);
+    for(var key in localStorage) {
+	if(localStorage.getItem(key) == song_id) {
+	    localStorage.removeItem(key);
 	    return ;
         }
     }
 
-            $('.jp-playlist').append('<p>No Songs added.</p>');
 }
 
 function existsInPlaylist(song_id,playlist) {
