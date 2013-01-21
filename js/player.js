@@ -99,7 +99,7 @@ $(document).ready(function() {
 
     $('.saveplaylist').click(function() {
         if (localStorage.length == 0)
-	    alert("No items exist in playist !");
+	    console.log("No items exist in playist !");
         else  {
             for (var i = 0; i < songs_in_playlist.length; i++) {
                 save(songs_in_playlist[i]);
@@ -108,7 +108,7 @@ $(document).ready(function() {
     });
 
     $('.deleteplaylist').click(function() {
-        if (songs_in_playlist.length == 0) alert("No items in playlist.");
+        if (songs_in_playlist.length == 0) console.log("No items in playlist.");
         else {
             localStorage.clear(); //Remove all song id's from localstorage
 	    $('.jp-playlist ul').empty(); //Remove all songs from playlist
@@ -116,7 +116,7 @@ $(document).ready(function() {
         }
     });
 
-
+    //Handle clicking on remove button in the playlist
     $('.jp-playlist ul li .jp-playlist-item-remove').live('click', function() {
         var item_to_remove = $(this).parents('li').attr('id').trim();
         //Remove from songs_in_playlist array
@@ -125,9 +125,9 @@ $(document).ready(function() {
 	$(".jp-playlist ul li[id='"+item_to_remove+"']").remove();
         //Remove from localstorage
         remove(item_to_remove);
-
+        console.log(songs_in_playlist.length);
         if (songs_in_playlist.length == 0) {
-            $('.jp-playlist').append('<p>No songs exists!!</p>');
+            $('.jp-playlist').append('<p>No songs added!!</p>');
 
         }
     });
@@ -328,6 +328,8 @@ function remove(song_id) {
 	    return ;
         }
     }
+
+            $('.jp-playlist').append('<p>No Songs added.</p>');
 }
 
 function existsInPlaylist(song_id,playlist) {
