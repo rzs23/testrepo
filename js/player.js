@@ -42,7 +42,7 @@ $(document).ready(function() {
             songs_in_playlist.push(song_id);
 
 	    //Save in localstorage
-	    save(song_id);
+	    saveInLocalStorage(song_id);
 	    
 	    //Start playing the song
 	    play(song_id);
@@ -102,7 +102,7 @@ $(document).ready(function() {
 	    console.log("No items exist in playist !");
         else  {
             for (var i = 0; i < songs_in_playlist.length; i++) {
-                save(songs_in_playlist[i]);
+                saveInLocalStorage(songs_in_playlist[i]);
             }
         }
     });
@@ -127,10 +127,8 @@ $(document).ready(function() {
         removeFromLocalStorage(item_to_remove);
 	//Clear the thumbnail and title from jPlayer
 	resetJPlayer();
-        if (songs_in_playlist.length == 0) {
+        if (songs_in_playlist.length == 0) 
             $('.jp-playlist').append('<p>No songs added!!</p>');
-
-        }
     });
 
 
@@ -313,7 +311,7 @@ function isStored(song_id) {
     return false;
 }
 
-function save(song_id) {
+function saveInLocalStorage(song_id) {
 
     //Save the passed in song id in localStorage if it is not already saved
     if(! isStored(song_id))
