@@ -125,7 +125,8 @@ $(document).ready(function() {
 	$(".jp-playlist ul li[id='"+item_to_remove+"']").remove();
         //Remove from localstorage
         removeFromLocalStorage(item_to_remove);
-        console.log(songs_in_playlist.length);
+	//Clear the thumbnail and title from jPlayer
+	resetJPlayer();
         if (songs_in_playlist.length == 0) {
             $('.jp-playlist').append('<p>No songs added!!</p>');
 
@@ -304,8 +305,8 @@ function initializeJPlayer() {
 }
 
 function isStored(song_id) {
-    for(var i = 0 ; i < localStorage.length ; i++) {
-	if(localStorage.getItem(i) == song_id)
+    for(key in localStorage) {
+	if(localStorage.getItem(key) == song_id)
 	    return true;
     }
 
@@ -368,4 +369,10 @@ function play(song_id) {
 function log() {
   console.log("songs_in_playlist length="+songs_in_playlist.length+" localstorage length="+localStorage.length+" playlist length="+sizeOfPlaylist());
 
+}
+
+function resetJPlayer() {
+  //Clear the thumbnail and title from jPlayer
+  $('.song-thumb img').attr('src','')
+  $('.albmtitle h5').html('')
 }
